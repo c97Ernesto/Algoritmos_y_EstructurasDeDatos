@@ -231,18 +231,4 @@ public class ListaEnlazadaGenerica<T> extends ListaGenerica<T> {
 		return true;
 	}
 
-	@Override
-	public boolean agregar(T[] array) {
-		// TODO Auto-generated method stub
-		if (array.length != 0) {
-			for (T elemento: array) {
-				this.agregarFinal(elemento);
-			} 
-			return true;
-			
-		} else {
-			return false;
-		}
-	}
-
 }
