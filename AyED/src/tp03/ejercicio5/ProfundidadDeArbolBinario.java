@@ -16,13 +16,12 @@ public class ProfundidadDeArbolBinario {
 		if (this.arbolBinario != null)
 			return this.recorridoPorNiveles(this.arbolBinario, p);
 		else
-			return -1;
-		
+			return -1;	
 	}
 	
 	private int recorridoPorNiveles(ArbolBinario<Integer> abInt, int profundidad) {
 		ArbolBinario<Integer> nodo = null;
-		ColaGenerica<ArbolBinario<Integer>> cola = new ColaGenerica<>();
+		ColaGenerica<ArbolBinario<Integer>> cola = new ColaGenerica<ArbolBinario<Integer>>();
 		
 		cola.encolar(abInt);
 		cola.encolar(null);
@@ -50,7 +49,6 @@ public class ProfundidadDeArbolBinario {
 		}
 		
 		return suma;
-		
 		
 	}
 	

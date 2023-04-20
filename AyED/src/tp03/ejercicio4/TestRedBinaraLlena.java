@@ -1,8 +1,8 @@
-package tp03.ejercicio5;
+package tp03.ejercicio4;
 
 import tp03.ejercicio1.ArbolBinario;
 
-public class TestProfundidad {
+public class TestRedBinaraLlena {
 	public static void main(String[] args) {
 		ArbolBinario<Integer> a = new ArbolBinario<Integer>(3); 
 		ArbolBinario<Integer> b = new ArbolBinario<Integer>(4); 
@@ -24,13 +24,10 @@ public class TestProfundidad {
 //												  
 										
 		
-		ProfundidadDeArbolBinario test = new ProfundidadDeArbolBinario(a);
+		RedBinariaLlena test = new RedBinariaLlena(a);
 		
-		int sumaTotalEnElNivel = test.sumaElementosProfundidad(2);
+		int sumaTotalEnProfundidad = test.retardoEnvio();
 		
-		System.out.print(sumaTotalEnElNivel);
-		
-		
-		
+		System.out.print(sumaTotalEnProfundidad);
 	}
 }
