@@ -1,6 +1,10 @@
 package tp02.ejercicio2;
 
-
+/**
+ * ListaDeEnteros es una clase abstracta que define los métodos que deberán
+ * implementar todas aquellas clases que quieran representar una coleccion de
+ * números enteros, extendiendo esta clase
+ * */
 public abstract class ListaGenerica<T> {
 
 	/** permite posicionarse al principio de la lista */
@@ -17,7 +21,7 @@ public abstract class ListaGenerica<T> {
 
 	/**
 	 * devuelve el elemento que se encuentra en la posicion pos. Hay que
-	 * recordar que la lista empieza en la posicion 1.
+	 * recordar que la lista empieza en la posicion 0.
 	 * 
 	 * @param pos
 	 *            posicion del elemento que se va a recuperar
@@ -112,6 +116,6 @@ public abstract class ListaGenerica<T> {
 	/**
 	 * Devuelve una lista sin elementos.
 	 * **/
-
+	//public abstract void limpiar();
 
 }
