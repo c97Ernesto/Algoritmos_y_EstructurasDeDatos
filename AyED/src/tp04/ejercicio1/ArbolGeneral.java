@@ -4,11 +4,30 @@ import tp02.ejercicio2.ListaEnlazadaGenerica;
 import tp02.ejercicio2.ListaGenerica;
 
 public class ArbolGeneral<T> {
-
+//	ATRIBUTOS
 	private T dato;
 
 	private ListaGenerica<ArbolGeneral<T>> hijos = new ListaEnlazadaGenerica<ArbolGeneral<T>>();
+	
+//	CONSTRUCTORES
+//	El constructor ArbolGeneral(T dato) inicializa un árbol que tiene como raíz un nodo general. Este
+//	nodo tiene el dato pasado como parámetro y una lista vacía.
+	public ArbolGeneral(T dato) {
+		this.dato = dato;
+	}
 
+//	El constructor ArbolGeneral(T dato, ListaGenerica<ArbolGeneral<T>> hijos) inicializa un árbol
+//	que tiene como raíz un nodo general. Este nodo tiene el dato pasado como parámetro y tiene como
+//	hijos la lista pasada como parámetro.
+	public ArbolGeneral(T dato, ListaGenerica<ArbolGeneral<T>> hijos) {
+		this(dato); //llamamos aL otro contructor de ésta misma clase, reutilizamos código.
+		if (hijos==null)
+			this.hijos = new ListaEnlazadaGenerica<ArbolGeneral<T>>();
+		else
+			this.hijos = hijos;
+	}
+
+//	METODOS
 //	El método getDato():T retorna el dato almacenado en la raíz del árbol.
 	public T getDato() {
 		return dato;
@@ -20,23 +39,6 @@ public class ArbolGeneral<T> {
 	}
 
 	public void setHijos(ListaGenerica<ArbolGeneral<T>> hijos) {
-		if (hijos==null)
-			this.hijos = new ListaEnlazadaGenerica<ArbolGeneral<T>>();
-		else
-			this.hijos = hijos;
-	}
-
-//	El constructor ArbolGeneral(T dato) inicializa un árbol que tiene como raíz un nodo general. Este
-//	nodo tiene el dato pasado como parámetro y una lista vacía.
-	public ArbolGeneral(T dato) {
-		this.dato = dato;
-	}
-
-//	El constructor ArbolGeneral(T dato, ListaGenerica<ArbolGeneral<T>> hijos) inicializa un árbol
-//	que tiene como raíz un nodo general. Este nodo tiene el dato pasado como parámetro y tiene como
-//	hijos la lista pasada como parámetro.
-	public ArbolGeneral(T dato, ListaGenerica<ArbolGeneral<T>> hijos) {
-		this(dato); //llamamos a otro contructor de ésta misma clase, reutilizamos código.
 		if (hijos==null)
 			this.hijos = new ListaEnlazadaGenerica<ArbolGeneral<T>>();
 		else
@@ -86,8 +88,20 @@ public class ArbolGeneral<T> {
 	}
 	
 	public Integer altura() {
-		// Falta implementar..
-		return 0;
+		int altura = 0;
+		
+		if (this.esHoja()) {
+			return altura;
+		}
+		if (this.tieneHijos()) {
+			ListaGenerica<ArbolGeneral<T>> hijos = this.getHijos();
+			hijos.comenzar();
+			while(!hijos.fin()) {
+				altura = Math.max(altura, hijos.proximo().altura());
+			}
+			altura+= +1;
+		}
+		return altura;
 	}
 
 	public Integer nivel(T dato) {
