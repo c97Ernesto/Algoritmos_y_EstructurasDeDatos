@@ -1,5 +1,6 @@
 package tp04.ejercicio1;
 
+import tp02.ejercicio03.ColaGenerica;
 import tp02.ejercicio2.ListaEnlazadaGenerica;
 import tp02.ejercicio2.ListaGenerica;
 
@@ -87,6 +88,8 @@ public class ArbolGeneral<T> {
 		return null;
 	}
 	
+//	public int altura(): int devuelve la altura del árbol, es decir, la longitud del camino más largo
+//	desde el nodo raíz hasta una hoja.
 	public Integer altura() {
 		int altura = 0;
 		
@@ -104,14 +107,77 @@ public class ArbolGeneral<T> {
 		return altura;
 	}
 
+//	public int nivel(T dato) devuelve la profundidad o nivel del dato en el árbol. El nivel de un nodo
+//	es la longitud del único camino de la raíz al nodo.
 	public Integer nivel(T dato) {
-		// falta implementar
-		return -1;
+		ColaGenerica<ArbolGeneral<T>> cola = new ColaGenerica<ArbolGeneral<T>>();
+		ArbolGeneral<T> nodo;
+		
+		cola.encolar(this);
+		cola.encolar(null);
+		
+		int nivel = 0; boolean ok = false;
+		
+		while(!cola.esVacia() && !ok) {
+			nodo = cola.desencolar();
+			
+			if (nodo != null) {
+				if (nodo.getDato() == dato) {
+					ok = true;
+				} 
+				else if (nodo.tieneHijos()) {
+					ListaGenerica<ArbolGeneral<T>> hijos = nodo.getHijos();
+					hijos.comenzar();
+					while(!hijos.fin()) {
+						cola.encolar(hijos.proximo());
+					}
+				} 
+				
+			} 
+			else if(!cola.esVacia() && !ok) {
+				nivel++;
+				cola.encolar(null);
+			}
+		}
+		
+		if (ok) return nivel;
+		else return -1;
+		
 	}
 
+//	public int ancho(): int la amplitud (ancho) de un árbol se define como la cantidad de nodos que
+//	se encuentran en el nivel que posee la mayor cantidad de nodos.
 	public Integer ancho() {
-		// Falta implementar..
-		return 0;
+		ColaGenerica<ArbolGeneral<T>> cola = new ColaGenerica<ArbolGeneral<T>>();
+		ArbolGeneral<T> nodo;
+		
+		cola.encolar(this);
+		cola.encolar(null);
+		
+		int cantNodos = 0, maxCantNodos = 0; 
+		
+		while (!cola.esVacia()) {
+			nodo = cola.desencolar();
+			
+			if (nodo != null) {
+				cantNodos++;
+				
+				if (nodo.tieneHijos()) {
+					ListaGenerica<ArbolGeneral<T>> hijos = nodo.getHijos();
+					hijos.comenzar();
+					while (!hijos.fin()) {
+						cola.encolar(hijos.proximo());	
+					}
+				}
+			} else if (!cola.esVacia()) {
+				maxCantNodos = Math.max(cantNodos, maxCantNodos);
+				cantNodos = 0;
+				
+				cola.encolar(null);
+			}
+		}
+		
+		return maxCantNodos;
 	}
 
 }

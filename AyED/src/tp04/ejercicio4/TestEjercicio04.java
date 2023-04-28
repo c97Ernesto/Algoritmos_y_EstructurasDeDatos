@@ -58,5 +58,12 @@ public class TestEjercicio04 {
 	int altura = a.altura();
 	System.out.println("Altura = " + altura );
 	
+	int dato = 11;
+	int nivelDelDato = a.nivel(dato);
+	System.out.println("Nivel del dato "+ dato +" : "+ nivelDelDato );
+	
+	int ancho = a.ancho();
+	System.out.println("Anchura del árbol =  "+ ancho);
+	
 	}
 }
