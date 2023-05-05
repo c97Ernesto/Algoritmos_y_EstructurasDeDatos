@@ -132,7 +132,6 @@ public class ArbolGeneral<T> {
 						cola.encolar(hijos.proximo());
 					}
 				} 
-				
 			} 
 			else if(!cola.esVacia() && !ok) {
 				nivel++;
@@ -169,11 +168,13 @@ public class ArbolGeneral<T> {
 						cola.encolar(hijos.proximo());	
 					}
 				}
-			} else if (!cola.esVacia()) {
+			} else {
 				maxCantNodos = Math.max(cantNodos, maxCantNodos);
 				cantNodos = 0;
 				
-				cola.encolar(null);
+				if (!cola.esVacia()) {
+					cola.encolar(null);
+				}
 			}
 		}
 		

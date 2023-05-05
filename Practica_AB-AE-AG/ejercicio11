@@ -1,0 +1,41 @@
+11.- Obtenga la expresión prefija de la siguiente expresión postfija:
+A B C * D - E F / G / - *
+
+PASAMOS A INFIJA:
+
+  i d r     i d r
+A B C * D - E F / G / - * ==> A (B*C) D - (E/F) G / - *
+    
+    i   d r   i   d r
+A (B*C) D - (E/F) G / - * ==> A ((B*C)-D) ((E/F)/G) - *
+
+    h.i        h.d    r
+A ((B*C)-D) ((E/F)/G) - * ==> A [((B*C)-D)-((E/F)/G)] *
+
+i           d           r
+A [((B*C)-D)-((E/F)/G)] * ==> A * [((B*C)-D)-((E/F)/G)] = Expresión Infija
+
+
+PASAMOS A PREFIJA
+                                     r i d  
+A * [((B*C)-D)-((E/F)/G)] ==> A * [((* B C)-D)-((E/F)/G)]
+
+                                                   r i d
+A * [((* B C)-D)-((E/F)/G)] ==> A * [((* B C)-D)-((/ E F)/G)]
+
+                                         r   h.i  h.d 
+A * [((* B C)-D)-((/ E F)/G)] ==> A * [( - (* B C) D)-((/ E F)/G)]
+
+                                                         r   h.i   h.d 
+A * [( - * B C D) -((/ E F)/G)] ==> A * [( - * B C D)-( / (/ E F)  G)]
+
+                                         r     h.i        h.d           
+A * [( - * B C D)-(/ / E F  G)] ==> A * [-( - * B C D)(/ / E F  G)]
+
+                                 r i            d  
+A * [- - * B C D / / E F  G] ==> * A [- - * B C D / / E F  G]
+
+* A - - * B C D / / E F  G
+
+
+

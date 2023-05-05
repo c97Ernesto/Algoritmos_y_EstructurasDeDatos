@@ -1,0 +1,28 @@
+1.- Dado un árbol binario T cuyo recorrido postorden es A G F E B J I H C D y su recorrido inorden es
+A B G E F D J H I C ¿cuántos son los descendientes del nodo “C”?
+(a) 2   
+(b) 1   
+(c) 3  --> descendientes de C
+(d) ninguna de las anteriores       
+
+1ro_ Tomar el último elemento como la raíz del árbol en el recorrido postorden
+2do_ Buscar la posición de la ráiz en la los elementos inorden y separar los que 
+están a la izquierda del elemento raíz y los que están a la derecha, ya que esos serán
+sus subárboles
+3ro_ Recursivamente aplicar paso 1 y 2.
+
+postorden: A G F E B J I H C D => D raíz
+inorden: A B G E F D J H I C => A B G E F subárbol izquierdo, J H I C subárbol derecho
+                            D
+                A B G E F       J H I C
+
+postorden: 
+        A G F E B => B raíz
+        J I H C => C raíz
+inorden: 
+        A  B  G E F => A sub izq, G E F sub der
+        J H I  C => J H I sub izq, no der
+                            D
+                 B                   C
+         A          G E F       J H I
+        

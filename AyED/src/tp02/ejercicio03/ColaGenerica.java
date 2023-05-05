@@ -5,7 +5,7 @@ import tp02.ejercicio2.ListaGenerica;
 
 public class ColaGenerica<T> {
 	
-	private ListaGenerica<T> datos = new ListaEnlazadaGenerica<>();
+	private ListaGenerica<T> datos = new ListaEnlazadaGenerica<T>();
 	
 	public void encolar(T elemento){
 		this.datos.agregarFinal(elemento);

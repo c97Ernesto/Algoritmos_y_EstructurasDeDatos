@@ -1,0 +1,17 @@
+5.- Evalúe la siguiente expresión postfija y determine cuál es el resultado.
+6 5 * 7 3 − 4 8 + * +
+(a) 78 --> V
+(b) 66
+(c) 34
+(d) 44
+
+i d r i d r i d r 
+6 5 * 7 3 − 4 8 + * + --> los operandos siempre son raíz
+       
+       h.i   h.d  r
+(6*5) (7-3) (4+8) * + --> (6*5) [(7-3)*(4+8)] +
+
+ h.i       h.d      r
+(6*5) [(7-3)*(4+8)] + --> (6*5) + [(7-3)*(4+8)]
+
+30 + (4*12) = 78
