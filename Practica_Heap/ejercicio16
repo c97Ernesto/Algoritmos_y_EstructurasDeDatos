@@ -1,0 +1,6 @@
+Ejercicio 16
+La operación que agrega un elemento a la heap que tiene n elementos, en el peor caso es de ......
+(a) O(n)
+(b) O(n log n)
+(c) O(log n) --> ya que el algoritmo recorre la altura de la heap, tiene O(log n) intercambios.
+(d) Ninguna de las otras opciones

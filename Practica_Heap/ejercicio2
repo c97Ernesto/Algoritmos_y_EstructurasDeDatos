@@ -1,0 +1,11 @@
+Ejercicio 2
+a) ¿Cuántos elementos hay, al menos, en una heap de altura h?
+    Al ser la heap un arbol binario completo tiene como mínimo 2^h elementos.
+
+b) ¿Dónde se encuentra ubicado el elemento mínimo en una max-heap?
+    Puede estar en cualquiera de las hojas del arbol. Solo sabemos 
+    dónde se encuentra el máximo.
+
+c) ¿El siguiente arreglo es una max-heap : [23, 17, 14, 6, 13, 10, 1, 5, 7, 12] ?
+    No, porque no respeta la propiedad de que los datos hijos son menores a los datos padres.
+    El nodo hijo de la posición 9 (7) tendría que ser menor al nodo padre de la posición 4 (6).

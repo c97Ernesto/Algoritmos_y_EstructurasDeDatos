@@ -1,0 +1,13 @@
+Ejercicio 13
+Un arreglo de 7 enteros se ordena ascendentemente usando el algoritmo HeapSort. Luego de la fase
+inicial del algoritmo (la construcción de la heap), ¿cuál de los siguientes es un posible orden del arreglo?
+(a) 85 78 45 51 53 47 49 --> No cumple propiedad de MaxHeap
+(b) 85 49 78 45 47 51 53 --> Cumple la propiedad de MaxHeap
+(c) 85 78 49 45 47 51 53 --> No cumple propiedad de MaxHeap
+(d) 45 85 78 53 51 49 47 --> No cumple propiedad de MaxHeap
+(e) 85 51 78 53 49 47 45 --> No cumple propiedad de MaxHeap
+
+
+
+
+
