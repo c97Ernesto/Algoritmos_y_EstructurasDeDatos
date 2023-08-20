@@ -181,4 +181,56 @@ public class ArbolGeneral<T> {
 		return maxCantNodos;
 	}
 
+//	Se dice que un nodo n es ancestro de un nodo m si existe un camino desde n a m.
+//	Se dice que un nodo n es descendiente de un nodo m si existe un camino desde m a n.
+//	Implemente un método en la clase ArbolGeneral con la siguiente firma:
+	public boolean esAncestro(T a, T b) {
+		return buscar_a(a, b, this);
+	}
+	
+	private boolean buscar_a(T a, T b , ArbolGeneral<T> nodo) {
+		boolean ok = false;
+		
+		if (nodo.getDato() == a) {
+			if (this.tieneHijos()) {
+				ListaGenerica<ArbolGeneral<T>> hijos = nodo.getHijos();
+				hijos.comenzar();
+				while (!hijos.fin() && !ok) {
+					ok = buscar_b(b, hijos.proximo());
+				}
+			}
+		} else {
+			if (nodo.tieneHijos()) {
+				ListaGenerica<ArbolGeneral<T>> hijos= nodo.getHijos();
+				hijos.comenzar();
+				while (!hijos.fin() && !ok) {
+					ok = buscar_a(a, b, hijos.proximo());
+				}
+			}
+		}
+		return ok;
+	}
+	
+	private boolean buscar_b(T b, ArbolGeneral<T> nodo) {
+		boolean esDescendiente = false;
+		
+		if (nodo.esHoja()) {
+			esDescendiente = nodo.getDato() == b;
+		} else {
+			ListaGenerica<ArbolGeneral<T>> hijos = nodo.getHijos();
+			hijos.comenzar();
+			while (!hijos.fin()) {
+				esDescendiente = buscar_b(b, hijos.proximo());
+			}
+		}
+		return esDescendiente;
+	}
+	
+	private void clonar(ListaGenerica<T> lista,ListaGenerica<T> camino) {
+		lista.comenzar();
+		while (!lista.fin()) {
+			camino.agregarFinal(lista.proximo());
+		}
+	}
+	
 }
