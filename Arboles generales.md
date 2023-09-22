@@ -1,5 +1,5 @@
 <div>
-<h2 align="center">Árboles Binarios</h1>
+<h1 align="center">Árboles Binarios</h1>
 </div>
 
 
@@ -20,8 +20,7 @@
 
 ```java
 public void preOrden(ArbolGeneral<T> ab) {
-
-	System.out.println(ab.getDato());    // acción
+System.out.println(ab.getDato());    // acción
 
     ListaGenerica<ArbolGeneral<T>> hijos = ab.getHijos();
     
