@@ -76,10 +76,10 @@ public void postOrden(ArbolBinario<T> ab) {
 
 ```java
 public void porNiveles(ArbolBinario<T> ab) {
-    ArbolBinario<T> nodo = null;
+    ArbolBinario<T> nodo;
     ColaGenerica<ArbolBinario<T>> cola = new ColaGenerica<ArbolBinario<T>>();
 
-    cola.encolar(ab.getDato());
+    cola.encolar(ab);
     cola.encolar(null);     //se encola null para determinar el nivel en que nos encontramos
 
     while (!cola.esVacia()) {
