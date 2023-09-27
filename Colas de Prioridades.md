@@ -3,7 +3,7 @@
 </div>
 
 
-### [Definiciones](#definición-1)
+### [Definicion](#definicion-1)
 
 ### Distintas Implementaciones
 
@@ -11,15 +11,13 @@
 
 ### Operaciones
 
-### Construcción de una Heap
-
-### [Recorridos](#recorridos-1)
+### [Construcción de una Heap](#construcción-de-una-heap-1)
 
 ### HeapSort
 
 ___
 
-## Definición
+## Definicion
 **Una _Cola de Prioridad_ es una estructura de datos que permite al menos dos operaciones**
 
 - **Insert:** Inserta un elemento en la estructura.
