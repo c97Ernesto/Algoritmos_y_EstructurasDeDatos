@@ -7,11 +7,13 @@
 
 ### Descripción y terminología
 
-### Aplicaciońes
+### Aplicaciones
 
 ### Representaciones
 
 ### [Recorridos](#recorridos-1)
+
+___
 
 ## Recorridos
 
