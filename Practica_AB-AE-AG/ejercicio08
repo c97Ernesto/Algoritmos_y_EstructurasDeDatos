@@ -1,0 +1,71 @@
+Construya el árbol de expresión correspondiente a la siguiente expresión postfija.
+				6 5 * 7 3 − 4 8 * + +
+				
+Paso 1:
+	operador --> 6 
+	PILA = 6
+	
+Paso 2:
+	operador --> 5 --> apilo
+	PILA = 6 5
+	
+Paso 3:
+	operando --> * --> se toma como raíz y desapilo los hijos			*		R1
+	apilo --> R1													   6 5
+	
+	PILA = R1
+
+
+Paso 4:
+	operador --> 7 --> apilo
+	
+	PILA = R1 7
+	
+	
+Paso 5:
+	operador --> 3 --> apilo
+	
+	PILA = R1 7 3
+
+	
+Paso 6:
+	operando --> - --> se toma como raíz y desapilo los hijos			-		R2
+	apilo --> R2												   	   7 3
+	
+	PILA = R1 R2
+	
+Paso 7:
+	operador --> 4 --> apilo
+	
+	PILA = R1 R2 4
+
+	
+Paso 8:
+	operador --> 8 --> apilo
+	
+	PILA = R1 R2 4 8
+	
+Paso 9: 
+	operando --> * --> se toma como raíz y desapilo los hijos			*		R3
+	apilo --> R3													   4 8
+	
+	PILA = R1 R2 R3
+	
+Paso 10: 
+	operando --> + --> se toma como raíz y desapilo los hijos			 +		R4
+	apilo --> R4													   R2 R3
+	
+	PILA = R1 R4
+	
+Paso 11: 
+	operando --> + --> se toma como raíz y desapilo los hijos			 +		
+	apilo --> R5													   R1 R4
+	
+	PILA = R5
+	
+								
+								+
+						*				+
+					6		5		-		*
+								   7 3	   4 8
+				

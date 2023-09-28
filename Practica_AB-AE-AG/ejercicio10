@@ -1,22 +1,4 @@
 10.- Construya el árbol de expresión correspondiente a la siguiente expresión prefija.
  + + a e / * -  b c d f
 
-   r i d     r i d  
- + + a e / * - b c d f --> + (a+e) / * (b-c) d f
 
-           r   i   d           
- + (a+e) / * (b-c) d f --> + (a+e) / [(b-c)*d] f
-
-         r    h.i   h.d 
- + (a+e) / [(b-c)*d] f --> + (a+e) [[(b-c)*d]/f]
-
- r  h.i        h.d
- + (a+e) [[(b-c)*d] / f] -->  (a+e) + [[(b-c)*d] / f]
-
-                            +
-
-            +                           / 
-
-         a     e                *               f
-                            -       d
-                          b   c
