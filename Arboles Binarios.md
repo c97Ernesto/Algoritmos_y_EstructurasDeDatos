@@ -9,7 +9,6 @@
 
 ### [Recorridos](#recorridos-1)
 
-___
 
 ## Definición
 **Un _Árbol Binario_ es una colección de nodos, tal que:**
@@ -50,7 +49,7 @@ Conceptos:
 
 **Árbol Binario Completo:** Dado un árbol binario T de altura **h**, diremos que T es _completo_ si es lleno de altura h-1 y el nivel (h) se completa de izquierda a derecha.
 
-- _Cantidad de nodos de un árbol binario lleno:_ Sea T un árbol binario lleno de altura _h_, la cantidad de nodos N varía entre 2<sup>h</sup> y 2<sup>h+1</sup>-1
+- _Cantidad de nodos de un árbol binario completo:_ Sea T un árbol binario completo de altura _h_, la cantidad de nodos N varía entre 2<sup>h</sup> y 2<sup>h+1</sup>-1
 
 
 ## Recorridos

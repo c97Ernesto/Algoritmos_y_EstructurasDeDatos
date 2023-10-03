@@ -1,8 +1,6 @@
 <div>
-<h2 align="center">Árboles de Expresión</h1>
+<h1 align="center">Árboles de Expresión</h1>
 </div>
-
-___
 
 ## Definición
 **Es un árbol binario asociado a una expresión aritmética:**
@@ -10,8 +8,6 @@ ___
 - Los nodos internos representan operadores.
 
 - Los nodos externos (hojas) representan operandos.
-
-## Recorridos
 
 
 ## Construcción

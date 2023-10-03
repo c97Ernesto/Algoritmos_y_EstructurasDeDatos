@@ -15,7 +15,6 @@
 
 ### [HeapSort](#heapsort)
 
-___
 
 ## Definición
 **Una _Cola de Prioridad_ es una estructura de datos que permite al menos dos operaciones**
@@ -52,7 +51,7 @@ Es una Implementación de Colas de Prioridad que no usa punteros y permite imple
 - En un Árbol Binario Completo de altura _h_, los nodos internos tienen exáctamente 2 hijos y las hojas tienen la misma profundidad.
 
 - El número de nodos _n_ de un árbol binario completo de altura _h_ satisface:
-	- 2^h <= n <= (2^(h+1)-1)
+	- 2<sup>h</sup> <= n <= 2<sup>(h+1)</sup>-1
 	
 - Dado que un árbol binario completo es una estructura de datos regular, puede almacenarse en un arreglo, tal que: 
 
