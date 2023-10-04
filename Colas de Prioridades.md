@@ -13,7 +13,7 @@
 
 ### [Construcción de una Heap](#construcción-de-una-heap-1)
 
-### [HeapSort](#heapsort)
+### [HeapSort](#ordenación-de-vectores-usando-Heap)
 
 
 ## Definición
@@ -133,5 +133,48 @@ Ventajas:
 - Se pueden insertar los elementos de a uno, realizando (n log n) operaciones en total.
 
 - Se puede usar un algoritmo (**BuildHeap**) de orden lineal, es decir, porporcional a los n elementos.
+	- Insertar los elementos desordenados en un árbol binario completo.
+	- Filtrar hacia abajo cada uno de los elementos.
+
+### Algoritmo Build Heap
+
+Para filtrar: 
+
+- se elige el menor de los hijos.
+- se compara el menor de los hijos con el padre.
+
+Se empieza a filtrar desde el elemento que está en la posición (tamaño / 2):
+
+- se filtran los nodos qie tienen hijos
+- el resto de los nodos son hojas.
+
+**Cantidad de operaciones requeridas:**
+
+- En el filtrado de cada nodo recorremos su altura
+
+- Para acotar la cantidad de operaciones _(tiempo de ejecución)_ del algoritmo BuildHeap, debemos calcular la suma de las alturas de todos los nodos.
+	- Teorema: En un arbol binario lleno de altura h que contiene 2<sup>h+1</sup> -1 nodos, la suma de las alturas de los nodos es: 2<sup>h+1</sup> - 1 - (h + 1)
+	
+## Ordenación de vectores usando Heap
+Dado un conjunto de _n_ elementos y se los quiere ordenar en forma creciente, existen dos alternativas:
+
+1. _Algoritmo que usa una heap y requiere una cantidad aproximada de (n log n) operaciones._
+
+	- Construir una MinHeap, realizar **n** DeleteMin operaciones e ir guardando los elementos extraídos en otro arreglo.
+	
+	- Desventaja: requiere el doble de espacio	
+	
+2. _Algoritmo **HeapSort** que requiere una cantidad aproximada de (n log n) operaciones, pero **menos espacio**_ 
+
+	- Construir una MaxHeap con los elementos que se desean ordenar, intercambiar el último elemento con el primero, decrementar el tamaño de la heap y filtrar hacia abajo. Usa solo el espacio de almacenamiento de la heap.
+
+
+
+
+
+
+
+
+
 
 
