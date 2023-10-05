@@ -46,8 +46,8 @@ public class TestBalanceo {
 
 	public static void main(String[] args) {
 
-		String cadena1 = "[][{]}";
-		String cadena2 = "([)} ";
+		String cadena1 = "{()[()]}";
+		String cadena2 = "({})";
 		if (esBalanceado(cadena1)) {
 			System.out.println(cadena1 + " está balanceado");
 			

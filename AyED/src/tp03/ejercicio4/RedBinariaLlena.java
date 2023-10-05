@@ -24,7 +24,7 @@ public class RedBinariaLlena {
 			return ab.getDato();
 		} else {
 			return ab.getDato() + Math.max(recorridoEnProfundidad(ab.getHijoIzquierdo()),
-					recorridoEnProfundidad(ab.getHijoDerecho()));
+				recorridoEnProfundidad(ab.getHijoDerecho()));
 		}
 	}
 

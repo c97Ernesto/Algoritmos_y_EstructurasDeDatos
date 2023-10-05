@@ -1,8 +1,9 @@
 package parciales;
 
+import tp02.ejercicio2.ListaGenerica;
 import tp03.ejercicio1.ArbolBinario;
 
-public class Parcial08_test {
+public class Parcial12_test {
 	public static void main(String[] args) {
 		ArbolBinario<Integer> a = new ArbolBinario<Integer>(2);
 
@@ -14,7 +15,7 @@ public class Parcial08_test {
 
 		ArbolBinario<Integer> f = new ArbolBinario<Integer>(8);
 
-		ArbolBinario<Integer> g = new ArbolBinario<Integer>(13);
+		ArbolBinario<Integer> g = new ArbolBinario<Integer>(22);
 
 		ArbolBinario<Integer> h = new ArbolBinario<Integer>(25);
 
@@ -36,14 +37,15 @@ public class Parcial08_test {
 							2
 				1						5
 			16		6				8		25
-								13				64
+								22				64
 */
-
-		int limite = 12;
 		
-		int testSuma = Parcial08.sumaImparesPosOrderMayorA(a, limite);
+		ListaGenerica<Integer> test = new Parcial12().resolver(a);
 		
-		System.out.println("Suma de impares mayores a "+ limite +" es: "+ testSuma);
+		
+		while (!test.fin()) {
+			System.out.println(test.proximo());
+		}
+		
 	}
-
 }
