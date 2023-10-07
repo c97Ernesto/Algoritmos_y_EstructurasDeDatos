@@ -43,6 +43,12 @@ Aplique el algoritmo HeapSort, para ordenar descendentemente los siguientes elem
 
 - Muestre paso a paso la ejecución del algoritmo sobre los datos.
 
+#### [Ejercicio 23](#ejercicio-23)
+- Aplique dos pasos de la segunda fase del algoritmo HeapSort en la siguiente MinHeap, resultado de la primer fase:
+	- 21, 27, 23, 40, 34, 29, 25 52
+	
+
+
 ___
 
 ### Ejercicio 1
@@ -261,10 +267,10 @@ Se elige el menor de los hijos y se compara con el padre.
 	- Intercambio
 		- 500 | 140, 90, 40, 33, 18, 15, 13, 12, 11, 10, 7, 2, 1
 		
-** 500, 140, 90, 40, 33, 18, 15, 13, 12, 11, 10, 7, 2, 1**	
+**500, 140, 90, 40, 33, 18, 15, 13, 12, 11, 10, 7, 2, 1**	
 	
-		
-		
+### Ejercicio 23
+
 		
 		
 		
