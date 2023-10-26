@@ -55,6 +55,9 @@ ___
 ### Ejercicio 6
 	
 ### Ejercicio 7	
+
+### Ejercicio 10
+
 		
 		
 		

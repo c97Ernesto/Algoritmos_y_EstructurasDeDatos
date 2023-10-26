@@ -1,2 +1,58 @@
-9.- Construya el árbol de expresión correspondiente a la siguiente expresión infija.
-( A + ( B * C ) ) * ( D – E )
+10.- Construya el árbol de expresión correspondiente a la siguiente expresión prefija
+					+ + a e / * - b c d f
+
++ es operador => raíz 												+
+	llamo con hijo izquierdo
+
++ es operador => raiz, 												+
+	llamo con hijo izquierdo								+
+
+a es operando => lo agrego como hijo hizquierdo						+
+	vuelvo de la recursión --> +							+
+	llamo con hijo derecho								a		
+
+e es operando => lo agrego como hijo derecho						+
+	no hay más llamados										+
+	vuelvo de la recursion --> +						a		e
+	no quedan llamados
+	vuelvo de la recursión --> +
+	llamo con el hijo derecho
+	
+/ es operador => raíz												+
+	llamo con hijo izquierdo								+				/
+														a		e		
+														
+* es operador => raíz												+
+	llamo con hijo izquierdo								+				/
+														a		e		*
+														
+- es operador => raíz												+
+	llamo con hijo izquierdo								+				/
+														a		e		*
+																	  -   
+	
+b es operando => lo agrego como hijo izquierdo						+
+	vuelvo de la recursión --> -							+				/
+	llamo con hijo derecho								a		e		*
+																	  -
+																	 b
+	
+c es operando => lo agrego como hijo derecho						+
+	vuelvo de la recursión --> -							+				/
+	no hay más llamados									a		e		*
+	vuelvo de la recursión --> *									  -
+	llamo con hijo derecho											 b c
+	
+d es operando => lo agrego como derecho								+
+	no hay más llamados										+				/
+	vuelvo de la recursión --> /						a		e		*
+	llamo con hijo derecho											  -	  d
+																	 b c
+	
+f es operando => lo agrego como derecho								+
+	no hay más llamados										+				/
+	vuelvo de la recursión --> /						a		e		*		f
+																	  -	  d
+																	 b c
+No hay más elementos
+	
