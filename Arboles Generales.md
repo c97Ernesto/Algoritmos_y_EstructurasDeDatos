@@ -32,6 +32,8 @@
 	
 **Árbol Lleno:** Dado un árbol T de grado **k** y altura **h**, diremos que  **T** es _lleno_ si cada nodo interno tiene grado k y todas las hojas están en el mismo nivel (h).
 
+- _Cantidad de nodos de un árbol **Lleno**:_ Sea T un árbol lleno de grado **k** y altura **h**, la cantidad  de nodos N es (k<sup>h+1</sup> - 1) / (k - 1)
+
 **Árbol Completo:** Dado un árbol T de grado **k**  y altura **h**, diremos que **T** es _completo_ si es lleno de altura h-1 y el nivel h se completa de izquierda a derecha.
 
 - _Cantidad de nodos de un árbol **Completo**:_ Sea T un árbol completo de grado **k** y altura **h**, la cantidad  de nodos N varía entre (k<sup>h</sup> + k - 2) / (k - 1) y (k<sup>h+1</sup> - 1) / (k - 1)

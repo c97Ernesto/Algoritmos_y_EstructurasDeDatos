@@ -5,13 +5,22 @@
 (c) 34
 (d) 44
 
-i d r i d r i d r 
-6 5 * 7 3 − 4 8 + * + --> los operandos siempre son raíz
-       
-       h.i   h.d  r
-(6*5) (7-3) (4+8) * + --> (6*5) [(7-3)*(4+8)] +
+Apilo 1er subárbol R1 = *
+					  6   5
+					
+Apilo 2do subárbol R2 = -
+					  7   3
 
- h.i       h.d      r
-(6*5) [(7-3)*(4+8)] + --> (6*5) + [(7-3)*(4+8)]
-
-30 + (4*12) = 78
+Apilo 3er subárbol R3 = +
+					  4   8
+					  
+Desapilo últimos dos subárboles y apilo subárbol R4 = *
+													R2 R3
+													
+Desapilo últimos dos subárboles (R1 y R4) y creo el árbol R5 = +
+															 R1	R4															 
+R1 = 30, R2 = 4, R3 = 12
+R4 = 4 * 12 = 48
+R5 = 30 + 48 = 78
+					
+						

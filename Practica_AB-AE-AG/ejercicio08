@@ -1,71 +1,60 @@
 08.- Construya el árbol de expresión correspondiente a la siguiente expresión postfija.
 				6 5 * 7 3 − 4 8 * + +
 				
-Paso 1:
-	operando --> 6 
-	PILA = 6
-	
-Paso 2:
-	operando --> 5 --> apilo
-	PILA = 6 5
-	
-Paso 3:
-	operador --> * --> se toma como raíz y desapilo los hijos			*		R1
-	apilo --> R1													   6 5
-	
-	PILA = R1
 
+Operando 6: apilo
+	6
+	
+Operando 5: apilo
+	6 5 
+	
+Operador *: tomo como raíz, desapilo hijos y apilo subárbol		
+	R1
+R1 = *
+    6 5
 
-Paso 4:
-	operando --> 7 --> apilo
+Operando 7: apilo
+	R1 7
+
+Operando 3: apilo
+	R1 7 3
 	
-	PILA = R1 7
+Operador -: tomo como raíz, despilo hijos y apilo subárbol						
+	R1 R2
+R2 = -
+	7 3
 	
+Operando 4: apilo
+	R1 R2 4
+
+Operando 8: apilo
+	R1 R2 4 8
 	
-Paso 5:
-	operando --> 3 --> apilo
+Operador *: tomo como raíz, despilo hijos y apilo subárbol
+	R1 R2 R3
+R3 = *
+	4 8
 	
-	PILA = R1 7 3
+Operador +: tomo como raíz, desapilo hijos y apilo subárbol
+	R1 R4
+R4 =  +
+	R2 R3
+	
+Operador +: tomo como raíz, despilo hijos u apilo árbol
+	R5
+R5 =  +
+	R1 R4
+	
+					+
+		*						+
+	6		5				-		*
+						  7   3   4   8
 
 	
-Paso 6:
-	operando --> - --> se toma como raíz y desapilo los hijos			-		R2
-	apilo --> R2												   	   7 3
 	
-	PILA = R1 R2
 	
-Paso 7:
-	operando --> 4 --> apilo
 	
-	PILA = R1 R2 4
-
 	
-Paso 8:
-	operando --> 8 --> apilo
 	
-	PILA = R1 R2 4 8
 	
-Paso 9: 
-	operador --> * --> se toma como raíz y desapilo los hijos			*		R3
-	apilo --> R3													   4 8
 	
-	PILA = R1 R2 R3
-	
-Paso 10: 
-	operador --> + --> se toma como raíz y desapilo los hijos			 +		R4
-	apilo --> R4													   R2 R3
-	
-	PILA = R1 R4
-	
-Paso 11: 
-	operador --> + --> se toma como raíz y desapilo los hijos			 +		
-	apilo --> R5													   R1 R4
-	
-	PILA = R5
-	
-								
-								+
-						*				+
-					6		5		-		*
-								   7 3	   4 8
-				

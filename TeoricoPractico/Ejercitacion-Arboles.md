@@ -24,10 +24,31 @@
 #### Ejercicio 18
 - Un árbol general lleno de grado 4, tiene 21 nodos
 	- Cual es la altura del árbol ?
+	
 	- Desarrolle.
+
+- Rta: **La altura del árbol es 2.**
+	- La cantidad de nodos de un árbol lleno es: (k<sup>h+1</sup> - 1) / (k - 1).
+	- Entonces: (k<sup>h+1</sup> - 1) / (k - 1) = 21
+	- Siendo k = grado del árboles
+		- (4<sup>h+1</sup> - 1) / (4 - 1) = 21 **==>** (4<sup>h+1</sup> - 1) = 21 * 3 **==>** 4<sup>h+1</sup> = 64
+	- Siendo que 64 = 4 <sup>3</sup>, reescribimos la ecuación:
+		- 4<sup>h+1</sup> = 4<sup>3</sup> 
+	- Dado que tenemos bases iguales, los exponentes deben ser iguales
+		- h+1 = 3 
+		- _h = 2_
+	
+	
+		 
 
 #### Ejercicio 19
 - Cual es la cantidad mínima de nodos en un árbol general completo de grado 3 y altura 4?
+
+- Rta: **41 nodos como mínimo.**
+	- La cantidad de nodos de un árbol general completo varía entre: (k<sup>h</sup> + k - 2) / (k - 1) y (k<sup>h+1</sup> - 1) / (k - 1)
+	- Siendo (k<sup>h</sup> + k - 2) / (k - 1) la cantidad mínima de nodos que puede tener un árbol general completo.
+	- Entonces: 
+		- (3<sup>4</sup> + 3 - 2) / (3 - 1) = 41
 	
 
 #### Ejercicio 20
@@ -35,14 +56,13 @@
 	1. Cuál es la cantidad de nodos internos del árbol.
 	2. Desarrolle el proceso realizado para obtener la respuesta anterior.
 
-#### Ejercicio 21
-- Un árbol binario completo de altura h, h >= 0 tiene:
-	1. Exáctamente 2<sup>h</sup> nodos hojas.
-	1. Como mínimo 2<sup>h</sup> nodos hojas.
-	1. Como máximo 2<sup>h</sup> nodos hojas.
-	1. Ninguna de las anteriores.
-
-#### Ejercicio 22
+- Rta: **La cantidad de nodos internos es de 31.**
+	- Dado que la cantidad de hojas de un árbol está dada por el grado  del árbol.
+	- Entonces 5<sup>h</sup> = 125 ==> 5<sup>3</sup> = 125
+		- Tenemos que en la altura 3 tenemos 125 nodos hojas
+	- Tenemos: 5<sup>0</sup> + ... + 5<sup>3</sup> = cantidad de nodos
+	- Como necesitamos solo los nodos internos del árboles:
+		- 5<sup>0</sup>	 + 5<sup>1</sup> + 5<sup>2</sup> = 31
 
 
 ___
@@ -56,7 +76,6 @@ ___
 	
 ### Ejercicio 7	
 
-### Ejercicio 10
 
 		
 		

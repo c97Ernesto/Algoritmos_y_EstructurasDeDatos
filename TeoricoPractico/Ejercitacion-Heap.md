@@ -43,10 +43,42 @@ Aplique el algoritmo HeapSort, para ordenar descendentemente los siguientes elem
 
 - Muestre paso a paso la ejecución del algoritmo sobre los datos.
 
-#### [Ejercicio 23](#ejercicio-23)
-- Aplique dos pasos de la segunda fase del algoritmo HeapSort en la siguiente MinHeap, resultado de la primer fase:
-	- 21, 27, 23, 40, 34, 29, 25 52
+#### [Ejercicio 8](#ejercicio-8)
+- Construir una max-heap binaria con los siguientes datos: {5, 8, 12, 9, 7, 10, 21, 6, 14, 4}
+
+	- a) Insertándolos de a uno
 	
+	- b) Usando el algoritmo BuildHeap
+	
+#### Ejercicio 19
+El algoritmo HeapSort consta de dos etapas:
+
+- 1) se construye una heap y
+- 2) se realizan los intercambios necesarios para dejar ordenados los datos.
+
+Asuma que la heap ya está construida y es la siguiente:
+
+- 58 38 53 23 28 40 35 18
+
+¿Cómo quedan los datos en el arreglo después de ejecutar sólo 2 pasos de la segunda etapa del
+Heapsort?
+
+**(a)** 40 38 23 28 35 18 53 58
+
+**(b)** 53 38 40 23 28 18 35 58
+
+**(c)** 40 38 23 35 28 18 53 58
+
+**(d)** 40 38 35 23 28 18 53 58	✅️
+
+- Paso 1:
+	- Intercambio: 18 38 53 23 28 40 35 | 58
+	- Filtro: 53 38 40 23 28 18 35 | 58
+
+- Paso 2:
+	- Intercambio: 35 38 40 23 28 18 | 53 58
+	- Filtro: 40 38 35 23 28 18 | 53 58
+
 
 
 ___
@@ -267,14 +299,54 @@ Se elige el menor de los hijos y se compara con el padre.
 	- Intercambio
 		- 500 | 140, 90, 40, 33, 18, 15, 13, 12, 11, 10, 7, 2, 1
 		
-**500, 140, 90, 40, 33, 18, 15, 13, 12, 11, 10, 7, 2, 1**	
-	
-### Ejercicio 23
+- **500, 140, 90, 40, 33, 18, 15, 13, 12, 11, 10, 7, 2, 1**	
 
+### Ejercicio 8 
+
+#### a) Insertando de a uno.
+- Insert 5: 5
+	
+- Insert 8: 5 8
+	- PercolateUp: 8 5
+	
+- Insert 12: 8 5 12
+	- PercolateUp: 12 5 8
+	
+- Insert 9: 12 5 8 9
+	- PercolateUp: 12 9 8 5
+	
+- Insert 7: 12 9 8 5 7
 		
-		
-		
-		
+- Insert 10: 12 9 8 5 7 10
+	- PercolateUp: 12 9 10 5 7 8
+			
+- Insert 21: 12 9 10 5 7 8 21
+	- PercolateUp: 21 9 12 5 7 8 10
+	
+- Insert 6: 21 9 12 5 7 8 10 6
+	- PercolateUp: 21 9 12 6 7 8 10 5
+	
+- Insert 14: 21 9 12 6 7 8 10 5 14
+	- PercolateUp: 21 14 12 9 7 8 10 5 6
+	
+- Insert 4: 21 14 12 9 7 8 10 5 6 4
+	
+- **[21 14 12 9 7 8 10 5 6 4]**
+
+#### b) Usando algoritmo BuildHeap.
+- {5, 8, 12, 9, 7, 10, 21, 6, 14, 4}
+
+-  7 no se filtra: 5, 8, 12, 9, 7, 10, 21, 6, 14, 4
+
+-  9 se filtra: 5, 8, 12, 14, 7, 10, 21, 6, 9, 4
+
+- 12 se filtra: 5, 8, 21, 14, 7, 10, 12, 6, 9, 4
+
+- 8 se filtra: 5, 14, 21, 9, 7, 10, 12, 6, 8, 4
+
+- 5 se filtra: 21, 14, 12, 9, 7, 10, 5, 6, 8, 4
+
+
 		
 		
 		

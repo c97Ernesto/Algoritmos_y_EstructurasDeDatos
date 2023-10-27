@@ -2,27 +2,35 @@
 A B G E F D J H I C ¿cuántos son los descendientes del nodo “C”?
 (a) 2   
 (b) 1   
-(c) 3  --> descendientes de C
+(c) 3  ✅️
 (d) ninguna de las anteriores       
 
-1ro_ Tomar el último elemento como la raíz del árbol en el recorrido postorden
-2do_ Buscar la posición de la ráiz en la los elementos inorden y separar los que 
-están a la izquierda del elemento raíz y los que están a la derecha, ya que esos serán
-sus subárboles
-3ro_ Recursivamente aplicar paso 1 y 2.
+PASO 1: 
+	raíz D					
+	lado izquierdo A G F E B 
+	lado derecho J I H C
+				D
+		AGFEB		JIHC
 
-postorden: A G F E B J I H C D => D raíz
-inorden: A B G E F D J H I C => A B G E F subárbol izquierdo, J H I C subárbol derecho
-                            D
-                A B G E F       J H I C
-
-postorden: 
-        A G F E B => B raíz
-        J I H C => C raíz
-inorden: 
-        A  B  G E F => A sub izq, G E F sub der
-        J H I  C => J H I sub izq, no der
-                            D
-                 B                   C
-         A          G E F       J H I
-        
+		
+PASO 2: A G F E B y J I H C
+	raíces B y C
+	lado izquierdo de B, A
+	lado derecho de B, G F E
+	lado izquierdo de C, J I H
+	lado derecho de C, no tiene
+				D
+		B				C
+	  A	  GFE	     JIH
+		
+PASO 3: G F E y J I H
+	raíces E y H
+	lado izquierdo de E, G
+	lado derecho de E, F
+	lado izquierdo de H, J
+	lado derecho de H, I
+				D
+		B				C
+	  A	  E	      	 H
+	     G F	  	J I	
+ 	  
