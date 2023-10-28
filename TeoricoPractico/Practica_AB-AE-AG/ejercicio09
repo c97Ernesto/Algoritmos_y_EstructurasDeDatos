@@ -64,3 +64,5 @@ Pila: *
 
 Se termina la expresión => saco todo lo que quedó en al pila.
 
+A B C *	+ D E - * * => expresión postfija.
+
