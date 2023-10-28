@@ -1,0 +1,66 @@
+9.- Construya el árbol de expresión correspondiente a la siguiente expresión infija.
+	( A + ( B * C ) ) * ( D – E )
+
+"(": paréntesis abertura => se apila	
+Salida:
+Pila: (
+
+A: operando => se manda a la salida.
+Salida: A
+Pila: (
+
++: operador => se apila seǵun su prioridad si hay otro operador.
+Salida: A
+Pila: ( +
+
+"(": paréntesis => se apila	
+Salida: A
+Pila: ( + (
+
+B: operando => se manda a la salida.
+Salida: A B
+Pila: ( + (
+
+*: operador => se coloca en la pila según la prioridad, como * > +
+se coloca en la pila.
+Salida: A B
+Pila: ( + ( *
+
+C: operando => se manda a la salida.
+Salida: A B C
+Pila: ( + ( *
+
+")": paréntesis cierre => desapilo (mando a la salida) hasta encontrar paréntesis de abertura.
+Salida: A B C *	
+Pila: ( + 
+
+")": paréntesis cierre => desapilo (mando a la salida) hasta encontrar paréntesis de abertura.
+Salida: A B C *	+
+Pila: 
+
+*: operador => se apila.
+Salida: A B C *	+
+Pila: *
+
+"(": paréntesis de abertura => se apila.
+Salida: A B C *	+
+Pila: * (
+
+D: operando => se manda a la salida.
+Salida: A B C *	+ D
+Pila: * (
+
+-: operador => se apila según su prioridad si hay otro operador.
+Salida: A B C *	+ D
+Pila: * ( - 
+
+E: operando => se manda a la salida.
+Salida: A B C *	+ D E
+Pila: * ( - 
+
+")": paréntesis de cierre => se desapila todo hasta paréntesis de abertura.
+Salida: A B C *	+ D E - *
+Pila: * 
+
+Se termina la expresión => saco todo lo que quedó en al pila.
+

@@ -10,12 +10,7 @@
 	- El elemento mínimo estará almacenado en una de sus hojas.
 
 3. ¿El siguiente arreglo es una max-heap : [23, 17, 14, 6, 13, 10, 1, 5, 7, 12] ?
- 	- No es una MaxHeap ya que no estaría cumpliendo la propiedad de orden de una MaxHeap, donde cada uno de los hijos tiene que ser menor al padre. El elemento 6 no es mayor que uno de sus hijos (7)
-	
-#### Ejercicio 3
-Dados los siguientes árboles, indique si representan una heap. Justifique su respuesta.
-
-- 
+ 	- No es una MaxHeap ya que no estaría cumpliendo la propiedad de orden de una MaxHeap, donde cada uno de los hijos tiene que ser menor al padre. El elemento 6 no es mayor que uno de sus hijos (7).
 
 #### Ejercicio 4
 - Dibuje todas las min-heaps posibles para este conjunto de claves: {A, B, C, D, E}
@@ -50,6 +45,108 @@ Aplique el algoritmo HeapSort, para ordenar descendentemente los siguientes elem
 	
 	- b) Usando el algoritmo BuildHeap
 	
+#### Ejercicio 12
+¿Cuáles de los siguientes arreglos representan una max-heap, min-heap o ninguna de las dos?
+
+- arreglo 1: 0 1 2 0 4 5 6 7 8 9 --> no representa nada
+
+- arreglo 2: 9 8 7 6 5 4 3 2 1 0 --> representa MaxHeap
+
+- arreglo 3: 5 5 5 6 6 6 6 7 7 1 --> no representa nada 
+
+- arreglo 4: 9 3 9 2 1 6 7 1 2 1 --> representa MaxHeap
+
+- arreglo 5: 8 7 6 1 2 3 4 2 1 2 --> no representa nada
+
+#### Ejercicio 13
+Un arreglo de 7 enteros se ordena ascendentemente usando el algoritmo HeapSort. Luego de la fase inicial del algoritmo (la construcción de la heap), ¿cuál de los siguientes es un posible orden del arreglo?
+
+**(a)** 85 78 45 51 53 47 49 
+
+**(b)** 85 49 78 45 47 51 53 
+
+**(c)** 85 78 49 45 47 51 53 
+
+**(d)** 45 85 78 53 51 49 47 
+
+**(e)** 85 51 78 53 49 47 45
+
+RTA: 
+
+- El arreglo se encuentra ordenado de menor a mayor. ¿Cómo se encontraba el arreglo en la fase inicial del algoritmo?
+- Se tiene que encontrar como una MaxHeap.
+- **Opción B**
+
+	
+#### Ejercicio 15
+¿Siempre se puede decir que un árbol binario lleno es una Heap?
+
+- (a) Sí
+
+- (b) **No**
+	- Además de ser completo (puede ser lleno) tiene que tener la propiedad de Orden.
+	
+#### Ejercicio 16
+La operación que agrega un elemento a la heap que tiene n elementos, en el peor caso es de ......
+
+- (a) O(n)
+
+- (b) O(n log n)
+
+- (c) **O(log n)**
+	- ya que el algoritmo recorre la altura de la heap, tiene O(log n) intercambios.
+	
+- (d) Ninguna de las otras opciones
+
+#### Ejercicio 17
+Se construyó una Máx-Heap con las siguientes claves: 13, 21, 87, 30, 25, 22, 18. 
+
+¿Cuál de las siguientes opciones corresponde al resultado de realizar la construcción insertando las claves una a una?
+
+**(a)** 87, 30, 25, 22, 21, 18, 13
+
+**(b)** 87, 30, 22, 21, 25, 13, 18
+
+**(c)** 87, 30, 25, 13, 22, 18, 21
+
+**(d)** **87, 30, 22, 13, 25, 21, 18** ✅️
+
+- Insert 13: 13
+
+- Insert 21: 13 21 **=>** 21 13 
+
+- Insert 87: 21 13 87 **=>** 87 13 21 
+
+- Insert 30: 87 13 21 30 **=>** 87 30 21 13 
+
+- Insert 25: 87 30 21 13 25
+
+- Insert 22: 87 30 21 13 25 22 **=>** 87 30 22 13 25 21 
+
+- Insert 18: 87 30 22 13 25 21 18
+	
+#### Ejercicio 18
+Se construyó una Máx-Heap con las siguientes claves: 13, 21, 87, 30, 25, 22, 18. 
+
+¿Cuál de las siguientes opciones corresponde al resultado de realizar la construcción aplicando el algoritmo Build-Heap?
+
+**(a)** 87, 30, 25, 22, 21, 18, 13
+
+**(b)** 87, 30, 22, 21, 25, 13, 18** ✅️
+
+- No Filtramos 87: 13, 21, 87, 30, 25, 22, 18
+
+- Filtramos 21: 13, 21, 87, 30, 25, 22, 18 **=>** 13, 30, 87, 21, 25, 22, 18
+
+- Filtramos 13: 13, 30, 87, 21, 25, 22, 18 **=>**
+ 87, 30, 13, 21, 25, 22, 18 **=>** 87, 30, 22, 21, 25, 13, 18
+
+**(c)** 87, 30, 25, 13, 22, 18, 21
+
+**(d)** 87, 30, 22, 13, 25, 21, 18
+
+	
+	
 #### Ejercicio 19
 El algoritmo HeapSort consta de dos etapas:
 
@@ -69,7 +166,7 @@ Heapsort?
 
 **(c)** 40 38 23 35 28 18 53 58
 
-**(d)** 40 38 35 23 28 18 53 58	✅️
+**(d)** **40 38 35 23 28 18 53 58** ✅️
 
 - Paso 1:
 	- Intercambio: 18 38 53 23 28 40 35 | 58
