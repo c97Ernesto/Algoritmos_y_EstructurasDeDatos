@@ -17,7 +17,7 @@ public class RecorridosAG {
 	public ListaGenerica<Integer> numerosImparesMayoresQuePreOrden(Integer n) {
 		ListaGenerica<Integer> listInt = new ListaEnlazadaGenerica<Integer>();
 		
-		if (this.arbolDeEnteros != null) {  
+		if (!this.arbolDeEnteros.esVacio()) {  
 			this.preOrden(this.arbolDeEnteros, n, listInt);
 			return listInt;
 		} else 
@@ -41,39 +41,40 @@ public class RecorridosAG {
 	
 	
 	
-//	public ListaGenerica<Integer> numerosImparesMayoresQueInOrden(Integer n) {
-//		ListaGenerica<Integer> listInt = new ListaEnlazadaGenerica<Integer>();
-//		
-//		if (this.arbolDeEnteros != null) {
-//			this.inOrden(this.arbolDeEnteros, n, listInt);
-//			return listInt;
-//		} else 
-//			return null;
-//		
-//	}
-//	
-//	private void inOrden (ArbolGeneral<Integer> a, Integer n, ListaGenerica<Integer> l) {
-//		int num = a.getDato();
-//		
-//		if (a.tieneHijos()) {
-//			ListaGenerica<ArbolGeneral<Integer>> hijos = a.getHijos();
-//			hijos.comenzar();
-//			
-//			
-//			while(!hijos.fin()) {
-//				this.inOrden(hijos.proximo(), n, l);
-//			}
-//		}
-//		
-//	}
+	public ListaGenerica<Integer> numerosImparesMayoresQueInOrden(Integer n) {
+		ListaGenerica<Integer> listInt = new ListaEnlazadaGenerica<Integer>();
+		
+		if (!this.arbolDeEnteros.esVacio()) {
+			this.inOrden(this.arbolDeEnteros, n, listInt);
+			return listInt;
+			
+		} else 
+			return null;
+	}
+	
+	private void inOrden (ArbolGeneral<Integer> a, Integer n, ListaGenerica<Integer> l) {
+		int num = a.getDato();
+		
+		if (a.tieneHijos()) {
+			ListaGenerica<ArbolGeneral<Integer>> hijos = a.getHijos();
+			hijos.comenzar();
+			
+			
+			while(!hijos.fin()) {
+				this.inOrden(hijos.proximo(), n, l);
+			}
+		}
+		
+	}
 	
 	
 	public ListaGenerica<Integer> numerosImparesMayoresQuePostOrden(Integer n) {
 		ListaGenerica<Integer> listInt = new ListaEnlazadaGenerica<Integer>();
 		
-		if (this.arbolDeEnteros != null) {
+		if (this.arbolDeEnteros.esVacio()) {
 			this.postOrden(this.arbolDeEnteros, n, listInt);
 			return listInt;
+			
 		} else 
 			return null;
 		

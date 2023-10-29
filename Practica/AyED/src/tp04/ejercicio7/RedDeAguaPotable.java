@@ -12,7 +12,7 @@ public class RedDeAguaPotable {
 	}
 	
 	public double minimoCaudal(double caudal) {
-		if (this.arbol != null) 
+		if (this.arbol.esVacio()) 
 			return this.recorrerProfundidad(this.arbol, caudal);
 		else
 			return -1;
@@ -21,12 +21,14 @@ public class RedDeAguaPotable {
 		double min = caudal;
 		
 		if (a.esHoja())
-			return caudal;
+			return min;
+		
 		else {
 			ListaGenerica<ArbolGeneral<String>> hijos = a.getHijos();
 			hijos.comenzar();
+			
 			while (!hijos.fin()) {
-				min = Math.min(min, recorrerProfundidad(hijos.proximo(), caudal/hijos.tamanio()));
+				min = Math.min(caudal, recorrerProfundidad(hijos.proximo(), caudal/hijos.tamanio()));
 			}
 		}
 		return min;

@@ -21,7 +21,8 @@ public class Parcial06 {
 		if (this.arbolBinario.esVacio()) {
 			System.out.println("arbolVacio");
 			return ok;
-		} else {
+		} 
+		else {
 			ArbolBinario<Integer> nodo = buscarNodo(this.arbolBinario, num);
 
 			if (!nodo.esVacio()) {

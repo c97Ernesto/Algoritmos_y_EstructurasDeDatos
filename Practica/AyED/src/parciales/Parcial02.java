@@ -10,7 +10,7 @@ public class Parcial02 {
 		int cant = 0;
 		
 		if (a.esHoja() && valor == 0)
-			return 1;
+			cant++;
 		else {
 			ListaGenerica<ArbolGeneral<Integer>> hijos = a.getHijos();
 			hijos.comenzar();

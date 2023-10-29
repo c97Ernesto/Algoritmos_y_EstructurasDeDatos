@@ -1,16 +1,48 @@
 package parciales;
+
+import tp02.ejercicio2.ListaEnlazadaGenerica;
+import tp02.ejercicio2.ListaGenerica;
+import tp04.ejercicio1.ArbolGeneral;
+
 /*
- * El famoso espía Eddie Chapman, alias agente "ZigZag" está tratando de decifrar el mensaje que le llega desde
- * Londres. Antes de dejar Londres, al agente le explicaron cómo debía decifrar el mensaje. Los mensajes 
- * estaban formados por letras, cada letra es codificada como una secuencia de unos o ceros y de diferentes
- * longitudes. Para poder decifrar el mensaje, A ZigZag le entregaron una estructura similar e éste gráfico.
- * En esta estructura, los 0 siempre están a la izquierda del nodo superior y los 1 a la derecha. A modo de 
- * ejemplo le enviarion el siguiente mensaje cifrado: 101 001 10001 1111 1001 110 1111 con la estructura 
- * traida desde Londres, el mensaje se debe descifra como ESGORDO.
- * Asuma que todas las secuencias cifradas que recibe se corresponden con una letra. Su misión es escribir
- * en una clase llamada CodigoZigZag un método con la sieguiente firma: public ListaGenrica<Character> 
+	Implementar una clase con un método que reciba un árbol general de enteros y retorne
+todos los árboles cuya raíz tenga un valor más pequeño que la suma de los valores de sus
+descendientes. 
  */
 public class Parcial10 {
-
+	
+	public ListaGenerica<ArbolGeneral<Integer>> devolverSubArboles(ArbolGeneral<Integer> ag) {
+		ListaGenerica<ArbolGeneral<Integer>> listaDeArboles = new ListaEnlazadaGenerica<ArbolGeneral<Integer>>();
+		
+		if (!ag.esVacio()) {
+			sumaDescendientes(ag, listaDeArboles);
+			return listaDeArboles;
+		}
+		else {
+			return null;
+		}
+	}
+	
+	public int sumaDescendientes(ArbolGeneral<Integer> ag, ListaGenerica<ArbolGeneral<Integer>> listaDeArboles) {
+		int num = ag.getDato();
+		int sumaHijos = 0;
+		
+		if (ag.tieneHijos()) {
+			ListaGenerica<ArbolGeneral<Integer>> hijos = ag.getHijos();
+			hijos.comenzar();
+			
+			while (!hijos.fin()) {
+				ArbolGeneral<Integer> nodo = hijos.proximo();
+				sumaHijos = sumaDescendientes(nodo, listaDeArboles);
+			}
+			if (sumaHijos > num) {
+				listaDeArboles.agregarFinal(ag);
+			}
+		}
+		
+		return sumaHijos + num;
+	}
+	
+	
 	
 }

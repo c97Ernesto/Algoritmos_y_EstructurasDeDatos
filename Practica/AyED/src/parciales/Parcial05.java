@@ -20,24 +20,23 @@ public class Parcial05 {
 		
 		if (a.esHoja()) {
 			l.agregarFinal(a.getDato());
-			return 1;
-			
-		} else {
+			cantHijos++;	
+		} 
+		else {
 			if (a.tieneHijoIzquierdo()) {
 				hijosI+= resolverPostOrden(a.getHijoIzquierdo(), l);
 				cantHijos+= hijosI;
-				
 			}
 			if (a.tieneHijoDerecho()) {
 				hijosD+= resolverPostOrden(a.getHijoDerecho(), l);
 				cantHijos+= hijosD;
 			}
-			
 			if (hijosD == hijosI)
 				l.agregarFinal(a.getDato());
 			
-			return cantHijos + 1;
+			cantHijos++;
 		}
+		return cantHijos;
 	}
 	
 }

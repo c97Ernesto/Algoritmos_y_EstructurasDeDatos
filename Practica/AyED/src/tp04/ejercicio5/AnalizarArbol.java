@@ -5,6 +5,7 @@ import tp02.ejercicio2.ListaGenerica;
 import tp04.ejercicio1.ArbolGeneral;
 
 public class AnalizarArbol {
+	
 	private static final ArbolGeneral<AreaEmpresa> FIN_NIVEL = new ArbolGeneral<AreaEmpresa>(null);
 	
 	public int devolverMaximoPromedio(ArbolGeneral<AreaEmpresa> arbol) {
@@ -30,7 +31,8 @@ public class AnalizarArbol {
 						cola.encolar(hijos.proximo());
 					}
 				}
-			} else {
+			} 
+			else {
 				promedio = promedio / cantNodos;
 				maxPromedio = Math.max(maxPromedio, promedio);
 				

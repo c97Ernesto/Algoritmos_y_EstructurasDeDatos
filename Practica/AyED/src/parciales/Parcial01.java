@@ -21,11 +21,12 @@ public class Parcial01 {
 
 	private Integer buscar(ArbolGeneral<Integer> a) {
 		
-		int max = 0;
+		int max = a.getDato();
 		
 		if (a.esHoja()) {
 			return a.getDato();
-		} else {
+		} 
+		else {
 			ListaGenerica<ArbolGeneral<Integer>> hijos = a.getHijos();
 			hijos.comenzar();
 			while (!hijos.fin()) {

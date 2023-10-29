@@ -5,7 +5,7 @@ import tp04.ejercicio1.ArbolGeneral;
 public class Parcial01_Test {
 	public static void main(String[] args) {
 		ArbolGeneral<Integer> a = new ArbolGeneral<Integer>(2);
-		ArbolGeneral<Integer> b = new ArbolGeneral<Integer>(7);
+		ArbolGeneral<Integer> b = new ArbolGeneral<Integer>(70);
 		ArbolGeneral<Integer> c = new ArbolGeneral<Integer>(5);
 		ArbolGeneral<Integer> d = new ArbolGeneral<Integer>(22);
 		
