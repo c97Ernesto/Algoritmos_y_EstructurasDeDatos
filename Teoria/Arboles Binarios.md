@@ -1,7 +1,10 @@
-<div>
-<h2 align="center">Árboles Binarios</h1>
-</div>
+<h1 align="center">Árboles</h1>
 
+## [Árboles binarios](#árboles-binarios)
+## [Árboles de expresión](#c3a1rboles-de-expresic3b3n-1)
+
+
+# Árboles Binarios
 
 ### [Definición](#definición-1)
 
@@ -36,6 +39,7 @@ Conceptos:
 	- La raíz tiene profundidad cero.
 	
 - **Grado** de n<sub>i</sub> es el número de hijos del nodo n<sub>i</sub>.
+    - En árboles binarios el grado de cualquier nodo nunca va a ser mayor a 2.
 
 - **Altura** de n<sub>i</sub> es la longitud del camino más largo desde n<sub>i</sub> hasta una hoja.
 	- Las hojas tienen altura 0.
@@ -144,4 +148,4 @@ public void porNiveles(ArbolBinario<T> ab) {
 
 
 
-
+# Árboles de Expresión
