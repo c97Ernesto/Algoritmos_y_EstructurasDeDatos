@@ -1,7 +1,8 @@
 <h1 align="center">Árboles</h1>
 
-## [Árboles binarios](#árboles-binarios)
-## [Árboles de expresión](#c3a1rboles-de-expresic3b3n-1)
+### [Árboles binarios](#c3a1rboles-binarios-1)
+### [Árboles de expresión](#c3a1rboles-de-expresic3b3n-1)
+### [Árboles Generales](#c3a1rboles-generales-1)
 
 
 # Árboles Binarios
@@ -62,16 +63,16 @@ Conceptos:
 - Se procesa primero la raíz y luego los hijos, izquierdo y derecho.
 
 ```java
-public void preOrden(ArbolBinario<T> ab) {
+public void preOrden(BinaryTree<T> binaryTree) {
 
-	System.out.println(ab.getDato());    // acción
+	System.out.println(binaryTree.getData());    // acción
 
-    if (ab.tieneHijoIzquierdo()) {
-        preorden(ab.getHijoIzquierdo());
+    if (binaryTree.hasLeftChild()) {
+        preorden(binaryTree.getLeftChild());
     }
 
-    if (ab.tieneHijoDerecho) {
-        preOrden(ab.getHijoDerecho());
+    if (binaryTree.hasRightChild) {
+        preOrden(binaryTree.getRightChild());
     }
 }
 ```
@@ -80,16 +81,16 @@ public void preOrden(ArbolBinario<T> ab) {
 - Se procesa primero el hijo izquierdo, luego la raíz y último el hijo derecho.
 
 ```java
-public void inOrden(ArbolBinario<T> ab) {
+public void inOrden(BinaryTree<T> binaryTree) {
 
-    if (ab.tieneHijoIzquierdo()) {
-        preorden(ab.getHijoIzquierdo());
+    if (binaryTree.hasLeftChild()) {
+        preorden(binaryTree.getLeftChild());
     }
 
-    System.out.println(ab.getDato());    // acción
+    System.out.println(binaryTree.getData());    // acción
 
-    if (ab.tieneHijoDerecho) {
-        preOrden(ab.getHijoDerecho());
+    if (binaryTree.hasRightChild) {
+        preOrden(binaryTree.getRightChild());
     }
 }
 ```
@@ -97,51 +98,47 @@ public void inOrden(ArbolBinario<T> ab) {
 - Se procesan primero los hijos, izquierdo y derecho, y luego la ráiz.
 
 ```java
-public void postOrden(ArbolBinario<T> ab) {
+public void postOrden(BinaryTree<T> binaryTree) {
 
-    if (ab.tieneHijoIzquierdo()) {
-        preorden(ab.getHijoIzquierdo());
+    if (binaryTree.hasLeftChild()) {
+        preorden(binaryTree.getLeftChild());
     }
 
-    if (ab.tieneHijoDerecho) {
-        preOrden(ab.getHijoDerecho());
+    if (binaryTree.hasRightChild) {
+        preOrden(binaryTree.getRightChild());
     }
 
-    System.out.println(ab.getDato());    // acción
+    System.out.println(binaryTree.getData());    // acción
 
 }
 ```
 **PorNiveles:**
-- Se procesan los nodos teniendo en cuenta sus niveles.
+- Se procesan los nodos teniendo en cuenta sus niveles, primero la raíz, luego los hijos, los hijos de estos, etc.
 
 ```java
-public void porNiveles(ArbolBinario<T> ab) {
-    ArbolBinario<T> nodo;
-    ColaGenerica<ArbolBinario<T>> cola = new ColaGenerica<ArbolBinario<T>>();
+public void porNiveles(BinaryTree<T> binaryTree) {
+    BinaryTree<T> nodo;
+    Queue<BinaryTree<T>> cola = new Queue<BinaryTree<T>>();
 
-    cola.encolar(ab);
-    cola.encolar(null);     //se encola null para determinar el nivel en que nos encontramos
+    cola.enqueue(binaryTree);
+    cola.enqueue(null);     //se encola null para determinar el nivel en que nos encontramos
 
-    while (!cola.esVacia()) {
-        nodo = cola.desencolar();
+    while (!cola.isEmpty()) {
+        nodo = cola.dequeue();
 
         if (nodo != null) {
-            System.out.println(ab.getDato());    //acción
+            System.out.println(binaryTree.getData());    //acción
 
-            if (nodo.tieneHijoIzquierdo) {
-                cola.encolar(nodo.getHijoIzquierdo());
-            }
+            if (nodo.hasLeftChild()) 
+                cola.enqueue(nodo.getLeftChild());
 
-            if (nodo.tieneHijoDerecho) {
-                cola.encolar(nodo.getHijoDerecho());
-            }
+            if (nodo.hasLeftChild) 
+                cola.enqueue(nodo.getRightChild());
         }
         else {
-            if (!cola.esVacia()){
-                cola.encolar(null);
-            }
+            if (!cola.isEmpty())
+                cola.enqueue(null);
         }
-
     }
 }
 ```
@@ -149,3 +146,113 @@ public void porNiveles(ArbolBinario<T> ab) {
 
 
 # Árboles de Expresión
+
+## Definición
+**Es un árbol binario asociado a una expresión aritmética:**
+
+- Los nodos internos representan operadores.
+
+- Los nodos externos (hojas) representan operandos.
+
+
+## Construcción
+
+#### Construcción de un árbol a partir de una expresión _posfija_ (estrategia 1):
+Este proceso es posible ya que la expresión posfija está organizada en una forma en la que los operandos aparecen antes que los operadores. Esto nos permite contruir el árbol utilziando una pila, donde se apilan operandos hasta que se encuentra un nodo operador que tome los dos últimos nodos de la pila como hijos.
+
+```
+procedure econvertir(expr_posf)
+
+    crear una Pila vacía
+
+    mientras (existe caracter) hacer
+        tomo un caracter de la expresión
+
+    	si (es un operando)
+    		creo un nodo y lo apilo.
+
+    	si (es un operador lo tomo como raíz de los dos últimos creados)
+		    creo un nodo R,
+		    desapilo y lo agrego como hijo derecho de R
+		    desapilo y lo agrego como hijo izquierdo de R
+		    apilo R.
+
+    desapilar árbol de expresión posfija final
+```
+
+#### Construcción de un árbol a partir de una expresión _prefija_ (estrategia 2):
+Este proceso es posible ya que la expresión prefija está organizada en una forma en la que los operadores siempre aparecen antes de los operandos. Cuando se llega a las hojas, la recursión retorna y permite ir armando el árbol desde abajo hacia arriba
+
+```java
+procedure convertir(expre_pref)
+
+    tomo el primer caracter de la expresión
+    creo un nodo R con ese operador
+
+    si el caracter es un operador
+        agregar como hijo izquierdo de R (convertir(expr_pref - 1 caracter))
+        agrego como hijo derecho de R(convertir(expr_pref - 1 carater))
+
+    //es un operando
+    devuelvo el nodo R
+```
+
+#### Construcción de un árbol a partir de una expresión _infija_:
+1. Pasamos expresión InFija a PosFija.
+
+2. Resolvemos expresión PosFija.
+
+3. Obtenemos el árbol de expresión.
+	
+``` 
+crear una Pila vacía
+mientras (existe un caracter) hacer
+    tomo un caracter de la expresión
+    si es un operando
+        se coloca en la salida
+    si es un operador se analiza su prioridad respecto del tope de la pila
+        si es un "(" o ")"
+            "(" se apila
+            ")" se desapila todo hasta el "(", incluido éste
+        sino
+            pila vacía u operador con > prioridad que el tope
+                se apila
+            operador con <= pioridad que el tope
+                se desapila, se manda a la salida y se vuelve a comparar el operador con el tope de la pila
+// se termina de procesar la expresión infija
+Se desapilan todos los elementos llevándolos a la salida, hasta que la pila quede vacía.
+```
+
+- Método que evalúa y retorna un número de acuerdo a la expresión  artimética representada por el _ArbolBinario_ que es enviado como parámetro.
+
+    ```java
+    public Integer evaluar(BinaryTree<Character> arbol) {
+        Character c = arbol.getData();
+        if ((c == '+') || (c == '-') || (c == '/') || c == '*') {
+            // es operador
+            int operador_1 = evaluar(arbol.getLeftChild());
+            int operador_2 = evaluar(arbol.getRightChild());
+            switch (c) {
+                case '+':
+                    return operador_1 + operador_2;
+                case '-':
+                    return operador_1 - operador_2;
+                case '*':
+                    return operador_1 * operador_2;
+                case '/':
+                    return operador_1 / operador_2;
+            }
+        }
+        // es operando
+        return Integer.parseInt(c.toString());
+    }
+    ```
+
+#### Prioridad de los operadores.
+1. potencia
+2. multiplicación y división
+3. suma y resta.
+
+
+
+# Árboles Generales

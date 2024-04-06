@@ -3,9 +3,10 @@
 
 ## Temas que se abarcan
 ### [Estructuras de datos lineales.]()
-- Listas.
-- Pilas.
-- Colas.
+- [Tipos de datos abstractos (Abstract Data Type)]()
+	- Listas.
+	- Pilas.
+	- Colas.
 
 ### [Estructuras de dato no lineales.]()
 - Árboles Binarios.
@@ -16,6 +17,13 @@
 ### [Análisis de algoritos]().
 - Cálculo de tiempo de ejecución.
 - Orden de ejecución de los algorimots.
+
+### [Otros]()
+- Framework de colecciones en java
+	- Tecnologías de almacenamiento
+	- Implementaciones de listas porvistas por la API: LinkedList y ArrayList
+- Tipos Genéricos
+- Iteradores
 
 
 
@@ -325,3 +333,49 @@ public class PasajePorValor {
 }
 ```
 - Aunque se pasa una copia de la referencia de `c` al método `cambiarNombre`, el método no puede cambiar la referencia original de `c` para que apunte al nuevo objeto `Contacto`, solo puede modificar la copia de la referencia que se pasa al método. Por lo tanto después de la llamada a `cambiarNombre()`, el nombre del objeto `Contacto` (`c`) en el método `main` seguirá siendo "Lucía".
+
+## Tipos de dato abstracto
+Un tipo de dato abstracto (TDA) (en inglés, ADT por Abstract Data Type) es un tipo definido solamente en términos de sus operaciones y de las restricciones que valen entre las operaciones.
+- Cada TDA se representa en esta asignatura como una clase o varias clases abstractas o interface.
+- Una o más implementaciones del TDA se brindan en términos de clases concretas.
+
+### TDA Lista (List)
+Una lista es una secuencia lineal de elementos que pueden manipularse libremente, se puede agregar y eliminar elementos en cualquier posición de la misma.
+
+#### Operaciones
+- `add(e)`: agrega un elemento e en la última posición.
+- `add(pos, e)`: agrega un elemento e en la posición e.
+- `get(pos)`: recupera el elemento de la posición pos.
+- `indexOf`: retorna el índice de la primera ocurrencia de e.
+- `remove(pos)`: elimina el elemento de la posición pos.
+- `remove(e)`: elimina el elemento e.
+- `contains(e)`: retorna true si e está en la lista, false en caso contrario
+- `size()`: Retorna un entero natural que indica cuántos elementos hay en la lista.
+
+### TDA Pila (Stack)
+Una pila es una secuancia lineal de objetos actualizada en un extremo llamado tope usando una política _LIFO_ (last-in first-out, el primero en entrar es el últio en salir).
+
+#### Operaciones
+- `push(e)`: Inserta el elemento e en el tope de la pila.
+- `pop()`: Elimina el elemento del tope de la pila y lo entrega como resultado. Si se aplica a una pila vacía, produce una situación de error.
+- `isEmpty()`: Retorna verdadero si la pila no contiene elementos y falso en caso contrario.
+- `top()`: Retorna el elemento del tope de la pila. Si se aplica a una pila vacía, produce una situación de error.
+- `size()`: Retorna un entero natural que indica cuántos elementos hay en la pila.
+
+### TDA Cola (Queue)
+Una cola es una secuancia lineal de objetos actualizada en sus extremos llamados frente y rabo siguiendo una política _FIFO_ (firs-in first-out, el primero en entrar es el primero en salir), también llamado FCFS (first-come first-served).
+
+#### Operaciones
+- `enqueue(e)`: Inserta el elemento en el rabo de la cola
+- `dequeue()`: Elimina el elemento del frente de la cola y lo retorna. Si la cola está vacía se produce un error.
+- `head()`: Retorna el elemento del frente de la cola. Si la cola está vacía se produce un error.
+- `isEmpty()`: Retorna verdadero si la cola no tiene elementos y falso en caso contrario.
+- `size()`: Retorna la cantidad de elementos de la cola.
+
+### Listas, Pilas y Colas
+- Pensando en la relación de herencia y los TAD analizados podríamos pensar en las siguientes relaciones.
+
+![listasPilasColas-Img1](Teoria/imgs/listasPilasColas-Img1.svg)
+
+- Considerando que disponemos de la implementación de una lista, podríamos llegar a la siguiente relación de clases:
+![listasPilasColas-Img2](Teoria/imgs/listasPilasColas-Img2.svg)
