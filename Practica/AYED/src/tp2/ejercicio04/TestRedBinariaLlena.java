@@ -19,7 +19,7 @@ public class TestRedBinariaLlena {
 		subIzquierdo.addRightChild(new BinaryTree<Integer>(3));
 		
 		subDerecho.addLeftChild(new BinaryTree<Integer>(6));
-		subDerecho.addRightChild(new BinaryTree<Integer>(8));
+		//subDerecho.addRightChild(new BinaryTree<Integer>(8));
 		
 //			5
 //		2		7

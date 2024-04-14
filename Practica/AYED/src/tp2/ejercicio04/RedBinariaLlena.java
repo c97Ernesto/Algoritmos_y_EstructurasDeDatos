@@ -32,4 +32,19 @@ public class RedBinariaLlena {
 		}
 	}
 	
+	public int retardoReenvio2() {
+		return this.retardo(binaryTree);
+	}
+
+	private int retardo(BinaryTree<Integer> arbol) {
+
+		if (arbol == null || arbol.isEmpty())
+			return 0;
+
+		int valorI = retardo(arbol.getLeftChild()); // no hay que preguntar si es null, sale antes.
+		int valorD = retardo(arbol.getRightChild());
+
+		return Math.max(valorI, valorD) + arbol.getData();
+	}
+	
 }
