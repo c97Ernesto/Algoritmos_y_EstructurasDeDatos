@@ -1,5 +1,6 @@
 <h1 align="center">Algoritmos y Estructuras de Datos</h1>
 
+## [Práctica](Practica#prácticas)
 
 ## Temas que se abarcan
 ### [Estructuras de datos lineales.]()

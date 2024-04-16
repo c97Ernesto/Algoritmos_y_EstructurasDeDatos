@@ -1,4 +1,11 @@
-# Prácticas
+# Prácticas: 
+
+### [Práctica 1: Listas.](#prc3a1ctica-1-listas-1)
+
+### [Práctica 2: Árboles Binarios](#prc3a1ctica-2-c3a1rboles-binarios-1).
+
+## Práctica 1: Listas.
+
 ## Práctica 2: Árboles Binarios.
 Implemente cada ejercicio en un paquete que contenga los números del TP y del ejercicio. Ejemplo tp2.ejercicio3 (dentro del proyecto llamado “AYED”).
 
@@ -176,6 +183,7 @@ Su tarea es calcular el mayor retardo posible, en el camino que realiza un mensa
 2. Cree una clase Java llamada RedBinariaLlena donde implementará lo solicitado en el método `retardoReenvio():int`
 
 ```java
+// VERSIÓN 1
 public class RedBinariaLlena {
 
 	private BinaryTree<Integer> binaryTree;
@@ -206,4 +214,32 @@ public class RedBinariaLlena {
 	}
 }
 
+```
+
+```java
+// VERSIÓN 2
+public class RedBinariaLlena2 {
+
+	private BinaryTree<Integer> binaryTree;
+
+	public RedBinariaLlena2(BinaryTree<Integer> binaryTree) {
+		this.binaryTree = binaryTree;
+	}
+	
+	public int retardoReenvio() {
+		return this.retardo(binaryTree);
+	}
+
+	private int retardo(BinaryTree<Integer> arbol) {
+
+		if (arbol == null || arbol.isEmpty())
+			return 0;
+
+		int valorI = retardo(arbol.getLeftChild()); // no hay que preguntar si es null, sale antes.
+		int valorD = retardo(arbol.getRightChild());
+
+		return Math.max(valorI, valorD) + arbol.getData();
+	}
+
+}
 ```
