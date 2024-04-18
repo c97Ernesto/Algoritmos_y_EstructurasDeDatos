@@ -1,5 +1,7 @@
 package tp2.ejercicio01;
 
+import tp1.ejercicio08.Queue;
+
 public class BinaryTree<T> {
 
 	private T data;
@@ -115,7 +117,33 @@ public class BinaryTree<T> {
 
 	// 0<=n<=m
 	public void entreNiveles(int n, int m) {
+		BinaryTree<T> nodo = new BinaryTree<T>(this.getData());
+		Queue<BinaryTree<T>> cola = new Queue<BinaryTree<T>>();
 
+		cola.enqueue(this);
+		cola.enqueue(null);
+		
+		int nivel = 0;
+		
+		while (!cola.isEmpty() && nivel <= m) {
+			nodo = cola.dequeue();
+			
+			if (nodo != null) {
+				if (nivel >= n)
+					System.out.print(nodo.getData()+" - ");
+				
+				if (nodo.hasLeftChild())
+					cola.enqueue(nodo.getLeftChild());
+				
+				if (nodo.hasRightChild())
+					cola.enqueue(nodo.getRightChild());
+			}
+			else {
+				if (!cola.isEmpty()) 
+					nivel++;
+					cola.enqueue(null);
+			}
+		}
 	}
 
 }

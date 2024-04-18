@@ -23,18 +23,16 @@ public class TestBianaryTree {
 		subDerecho.addLeftChild(new BinaryTree<Integer>(6));
 		subDerecho.addRightChild(new BinaryTree<Integer>(8));
 		
-		System.out.println(abb.contarHojas());
+		System.out.println("Cantidad de hojas: "+ abb.contarHojas());
 		
+		imprimirArbol(abb);
+		System.out.println();
 		imprimirArbol(abb.espejo());
 	
 	}
+	
+	
 	public static void imprimirArbol(BinaryTree<Integer> abb) {
-		if (abb.hasLeftChild()) {
-			imprimirArbol(abb.getLeftChild());
-		}
-		System.out.println(abb.getData());
-		if (abb.hasRightChild()) {
-			imprimirArbol(abb.getRightChild());
-		}
+		abb.entreNiveles(0, 7);
 	}
 }

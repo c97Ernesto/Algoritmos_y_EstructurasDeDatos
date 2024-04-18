@@ -1,7 +1,6 @@
 package tp2.ejercicio06;
 
 import tp2.ejercicio01.BinaryTree;
-import tp2.ejercicio05.ProfundidadDeArbolBinario;
 
 public class TestTransformacion {
 	public static <T> void main(String[] args) {

@@ -256,3 +256,120 @@ Se desapilan todos los elementos llevándolos a la salida, hasta que la pila que
 
 
 # Árboles Generales
+
+### [Definición](#definición-1)
+
+### [Descripción y terminología](#descripción-y-terminología-1)
+
+### [Recorridos](#recorridos-1)
+
+
+## Definición
+
+**Un Árbol es una colección de nodos, tal que:**
+
+- puede estar vacío. (Árbol vacío)
+
+- puede estar formado por un nodo distinguido _R_, llamado **raíz** y un conjunto de árboles T<sub>1</sub>, T<sub>2</sub>, ... ,T<sub>k</sub>, k >= 0 (subárboles), donde la raíz de cada subárbol T<sub>i</sub>, está conectado a _R_ por medio de una arista.
+
+## Descripción y terminología
+
+- **Grado** de n<sub>i</sub> es el número de hijos del nodo n<sub>i</sub>.
+	- El grado de un árbol es el grado del nodo con mayor grado.
+
+- **Altura** de n<sub>i</sub> es la longitud del camino más largo desde n<sub>i</sub> hasta una hoja.
+	- Las hojas tienen altura 0.
+	- La altura de un árbol es la altura del nodo raíz.
+
+- **Profundidad / Nivel:** de n<sub>i</sub> es la longitud del único camino desde la raíz hasta n<sub>i</sub>.
+	- La raíz tiene profundidad o nivel _cero_.
+	
+**Árbol Lleno:** Dado un árbol T de grado **k** y altura **h**, diremos que  **T** es _lleno_ si cada nodo interno tiene grado k y todas las hojas están en el mismo nivel (h).
+
+- _Cantidad de nodos de un árbol **Lleno**:_ Sea T un árbol lleno de grado **k** y altura **h**, la cantidad  de nodos N es (k<sup>h+1</sup> - 1) / (k - 1)
+
+**Árbol Completo:** Dado un árbol T de grado **k**  y altura **h**, diremos que **T** es _completo_ si es lleno de altura h-1 y el nivel h se completa de izquierda a derecha.
+
+- _Cantidad de nodos de un árbol **Completo**:_ Sea T un árbol completo de grado **k** y altura **h**, la cantidad  de nodos N varía entre (k<sup>h</sup> + k - 2) / (k - 1) y (k<sup>h+1</sup> - 1) / (k - 1)
+
+
+
+
+## Recorridos
+
+**PreOrden**
+- Se procesa primero la raíz y luego los hijos.
+
+```java
+//VERSION_1
+public void preOrder(GeneralTree<T> ab) {
+    System.out.println(ab.getData());    // acción
+
+    List<GeneralTree<T>> children = ab.getChildren();
+    for (GeneralTree<T> child: children)
+        preOrder(child)
+}
+//VERSION_2
+public void preOrder(GeneralTree<T> ab){
+    System.out.println(ab.getData());    // acción
+
+    List<GeneralTree<T>> children = ab.getChildren()
+    Iterator<GenralTree<T>> it = children.iterator();
+    while(it.hasNext()){
+        GeneralTree<T> child = it.next();
+        preOrder(child)
+    }
+}
+
+```
+
+**InOrden**
+- Se procesa el primer hijo, luego la raíz y por último los hijos restantes.
+
+**PostOrden**
+- Se procesan primero los hijos y luego la ráiz.
+
+```java
+public void postOrder(GeneralTree<T> ab) {
+    List<GeneralTree<T>> hijos = ab.getChildren();
+    Iterator<GenralTree<T>> it = children.iterator();
+    while(it.hasNext()){
+        GeneralTree<T> child = it.next();
+        preOrder(child)
+    }
+    
+    System.out.println(ab.getDato());    // acción
+}
+```
+**PorNiveles:**
+- Se procesan los nodos teniendo en cuenta sus niveles.
+
+```java
+public void traversalLevel(GeneralTree<T> ab) {
+	GeneralTree<T> nodoAux;
+	Queue<GeneralTree<T>> cola = new Queue<GeneralTree<T>>();
+	
+	cola.enqueue(ab);
+	cola.enqueue(null);
+	
+	while (!cola.esVacia()) {
+		nodoAux = cola.dequeue();
+		
+		if (nodoAux != null) {
+			//acción
+		
+			if (nodoaux.hasChildren()) {
+				List<GeneralTree<T>> hijos = nodoAux.getChildren();
+				for (GeneralTree<T> hijo: hijos)
+					cola.enqueue(hijo);
+				}
+			}
+		} else {		
+			if (!cola.isEmpty()) {
+				System.out.println("Otro nivel!!");
+				cola.enqueue(null);
+			}
+		}	
+	}
+}
+```
