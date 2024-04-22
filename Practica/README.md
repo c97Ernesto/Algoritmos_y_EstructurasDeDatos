@@ -193,7 +193,10 @@ public class RedBinariaLlena {
 	}
 	
 	public int retardoReenvio() {
-		return this.recorridoEnProfundidad(this.binaryTree);
+		if (!this.binaryTree.isEmpty())
+			return this.recorridoEnProfundidad(this.binaryTree);
+		else
+			return -1;
 	}
 	
 	private int recorridoEnProfundidad(BinaryTree<Integer> binaryTree) {
