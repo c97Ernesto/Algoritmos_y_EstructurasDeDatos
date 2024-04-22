@@ -302,18 +302,18 @@ Se desapilan todos los elementos llevándolos a la salida, hasta que la pila que
 
 ```java
 //VERSION_1
-public void preOrder(GeneralTree<T> ab) {
-    System.out.println(ab.getData());    // acción
+public void preOrder(GeneralTree<T> ag) {
+    System.out.println(ag.getData());    // acción
 
-    List<GeneralTree<T>> children = ab.getChildren();
+    List<GeneralTree<T>> children = ag.getChildren();
     for (GeneralTree<T> child: children)
         preOrder(child)
 }
 //VERSION_2
-public void preOrder(GeneralTree<T> ab){
-    System.out.println(ab.getData());    // acción
+public void preOrder(GeneralTree<T> ag){
+    System.out.println(ag.getData());    // acción
 
-    List<GeneralTree<T>> children = ab.getChildren()
+    List<GeneralTree<T>> children = ag.getChildren()
     Iterator<GenralTree<T>> it = children.iterator();
     while(it.hasNext()){
         GeneralTree<T> child = it.next();
@@ -325,31 +325,47 @@ public void preOrder(GeneralTree<T> ab){
 
 **InOrden**
 - Se procesa el primer hijo, luego la raíz y por último los hijos restantes.
+```java
+	private static void inOrder(GeneralTree<Integer> ag){
+
+		List<GeneralTree<Integer>> hijos = ag.getChildren();
+		Iterator<GeneralTree<Integer>> i = hijos.iterator();
+
+		if (ag.hasChildren())
+			numerosImparesMayoresQueInOrden(i.next(), n, listaEnteros);
+
+        System.out.println(ag.getData());    // acción
+
+		while (i.hasNext()) {
+			numerosImparesMayoresQueInOrden(i.next(), n, listaEnteros);
+		}
+	}
+```
 
 **PostOrden**
 - Se procesan primero los hijos y luego la ráiz.
 
 ```java
-public void postOrder(GeneralTree<T> ab) {
-    List<GeneralTree<T>> hijos = ab.getChildren();
+public void postOrder(GeneralTree<T> ag) {
+    List<GeneralTree<T>> hijos = ag.getChildren();
     Iterator<GenralTree<T>> it = children.iterator();
     while(it.hasNext()){
         GeneralTree<T> child = it.next();
         preOrder(child)
     }
     
-    System.out.println(ab.getDato());    // acción
+    System.out.println(ag.getDato());    // acción
 }
 ```
 **PorNiveles:**
 - Se procesan los nodos teniendo en cuenta sus niveles.
 
 ```java
-public void traversalLevel(GeneralTree<T> ab) {
+public void traversalLevel(GeneralTree<T> ag) {
 	GeneralTree<T> nodoAux;
 	Queue<GeneralTree<T>> cola = new Queue<GeneralTree<T>>();
 	
-	cola.enqueue(ab);
+	cola.enqueue(ag);
 	cola.enqueue(null);
 	
 	while (!cola.esVacia()) {
