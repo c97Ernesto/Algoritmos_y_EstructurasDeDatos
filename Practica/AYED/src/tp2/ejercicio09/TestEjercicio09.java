@@ -32,7 +32,7 @@ public class TestEjercicio09 {
 		
 		Ejercicio09 ej9 = new Ejercicio09();
 
-		BinaryTree<Dato> abDatos = ej9.sumAndDiff(veinte);
+		BinaryTree<Dato> abDatos = ej9.sumAndDiff2(veinte);
 		
 		ej9.recorrerArbol(abDatos);
 		

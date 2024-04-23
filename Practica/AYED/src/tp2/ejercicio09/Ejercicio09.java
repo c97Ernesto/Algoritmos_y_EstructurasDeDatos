@@ -4,36 +4,35 @@ import tp2.ejercicio01.BinaryTree;
 
 public class Ejercicio09 {
 
-	public BinaryTree<Dato> sumAndDiff(BinaryTree<Integer> arbol) {
-		BinaryTree<Dato> nuevoArbol = new BinaryTree<Dato>();
+	public BinaryTree<Dato> sumAndDiff2(BinaryTree<Integer> arbol) {
+		BinaryTree<Dato> nuevoArbol;
 
 		if (!arbol.isEmpty()) {
-			recorrerArbol(arbol, nuevoArbol, 0);
-			return nuevoArbol;
-		} else
-			System.out.println("No hay datos");
-			return null;
+			nuevoArbol = recorrerArbol(arbol, 0, 0);
+		} else {
+			nuevoArbol = new BinaryTree<Dato>();
+		}
+		return nuevoArbol;
 	}
-
-	private void recorrerArbol(BinaryTree<Integer> arbol, BinaryTree<Dato> nuevoArbol, int n) {
+	
+		
+	private BinaryTree<Dato> recorrerArbol(BinaryTree<Integer> arbol, int anterior, int suma) {
 		Dato datos = new Dato();
-		datos.setSuma(arbol.getData() + n);
-		datos.setDiferencia(arbol.getData() - n);
+		
+		datos.setSuma(arbol.getData() + suma);
+		datos.setDiferencia(arbol.getData() - anterior);
 
-		nuevoArbol.setData(datos);
-
-		BinaryTree<Dato> nodo;
+		BinaryTree<Dato> resultado = new BinaryTree<>(datos);
 		if (arbol.hasLeftChild()) {
-			nodo = new BinaryTree<Dato>();
-			recorrerArbol(arbol.getLeftChild(), nodo, arbol.getData() + n);
-			nuevoArbol.addLeftChild(nodo);
+			BinaryTree<Dato> hi = recorrerArbol(arbol.getRightChild(), arbol.getData(), datos.getSuma());
+			resultado.addLeftChild(hi);
 		}
 		if (arbol.hasRightChild()) {
-			nodo = new BinaryTree<Dato>();
-			recorrerArbol(arbol.getRightChild(), nodo, arbol.getData() + n);
-			nuevoArbol.addRightChild(nodo);
+			BinaryTree<Dato> hd = recorrerArbol(arbol.getRightChild(), arbol.getData(), datos.getSuma());
+			resultado.addRightChild(hd);
 		}
-
+		
+		return resultado;
 	}
 
 	public void recorrerArbol(BinaryTree<Dato> ab) {

@@ -35,7 +35,7 @@ public class TestEjercicio08 {
 //		7		 -5
 //	 23   6    18   19  
 //-3	55 11	-3    4
-//				    18
+//				    
 		
 		
 		BinaryTree<Integer> dos1 = new BinaryTree<Integer>(2);
@@ -70,10 +70,8 @@ public class TestEjercicio08 {
 //  	23     	   6     		18   	 19  
 //   -3         55   11	          -3	    4
 //  			 	
-		
-	Ejercicio08 ej8 = new Ejercicio08();
 	
-	System.out.println(ej8.esPrefijo(cincoNeg, cincoNeg1));
+		System.out.println(Ejercicio08.esPrefijo(dos, dos1));
 			
 			
 	}
