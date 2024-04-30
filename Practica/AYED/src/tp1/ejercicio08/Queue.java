@@ -25,7 +25,7 @@ public class Queue<T> {
 	}
 	
 	public boolean isEmpty() {
-		return (this.data == null);
+		return (this.data.size() == 0);
 	}
 	
 	public int size() {

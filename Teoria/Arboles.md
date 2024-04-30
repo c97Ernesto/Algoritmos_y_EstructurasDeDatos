@@ -368,7 +368,7 @@ public void traversalLevel(GeneralTree<T> ag) {
 	cola.enqueue(ag);
 	cola.enqueue(null);
 	
-	while (!cola.esVacia()) {
+	while (!cola.isEmpty()) {
 		nodoAux = cola.dequeue();
 		
 		if (nodoAux != null) {
