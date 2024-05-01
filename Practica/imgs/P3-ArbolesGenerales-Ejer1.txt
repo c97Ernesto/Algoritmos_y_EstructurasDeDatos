@@ -1,0 +1,23 @@
+@startuml
+class BinaryTree<<T>> {
+    - data: T
+    - children: List<GeneralTree<T>>
+    
+    + GeneralTree(): void
+    + GeneralTree(T): void
+    + GeneralTree(T, List<GeneralTree>>): void
+    + getData(): T
+    + setData(T): void
+    + getChildren(): List<GeneralTree<T>>
+    + setChildren(GeneralTree<T>>): void
+    + addChild(GeneralTree<T>>): void
+    + isLeaf(): boolean 
+    + hasChildren(): boolean
+    + isEmpty(): boolean 
+    + removeChild(GeneralTree<T>): void
+    + altura(): int
+    + nivel(T): int
+    + ancho(): int
+}
+@enduml
+
