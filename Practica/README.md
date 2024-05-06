@@ -655,7 +655,7 @@ Retomando el ejercicio abeto navideño visto en teoría, cree una clase `Navidad
 
 ```
 
-### [Ejercicio 9]()
+### [Ejercicio 9](AYED/src/tp3/ejercicio09/Ejercicio09.java)
 Implemente en la clase `ParcialArboles` el método: `public static boolean esDeSeleccion (GeneralTree<Integer> arbol)`
 que devuelve true si el árbol recibido por parámetro es de selección, falso sino lo es.
 
@@ -667,6 +667,36 @@ Para este otro árbol se debería retornar **false** (el árbol con raíz 18 tie
 
 ![P3-ArbolesGenerales-Ejer9-2](imgs/P3-ArbolesGenerales-Ejer9-2.png)
 
+```java
+public static boolean esDeSeleccion(GeneralTree<Integer> arbol) {
+	boolean esDeSeleccion = true;
+		
+	if ((arbol == null) || (arbol.isEmpty()))
+		esDeSeleccion = false;
+		
+	if (esDeSeleccion && arbol.hasChildren()) {
+		GeneralTree<Integer> hijoMin = new GeneralTree<Integer>(9999);
+		GeneralTree<Integer> hijo;
+			
+		Iterator<GeneralTree<Integer>> i = arbol.getChildren().iterator();
+			
+		while (i.hasNext() && esDeSeleccion) {
+			hijo = i.next();
+			if (hijoMin.getData() > hijo.getData()) {
+				hijoMin = hijo;
+			}
+			esDeSeleccion = esDeSeleccion(hijo);
+		}
+			
+		if (esDeSeleccion && (arbol.getData() != hijoMin.getData())) {
+			esDeSeleccion = false;
+		}
+	}
+		
+	return esDeSeleccion;
+}
+```
+
 ### [Ejercicio 10]()
 Implemente la clase `ParcialArboles`, y el método: `public static List<Integer> resolver(GeneralTree<Integer> arbol)` que recibe un árbol general de valores enteros, que solo pueden ser 0 o 1 y devuelve una lista con los valores que componen el **"camino filtrado de valor máximo”**, se llama “filtrado” porque sólo se agregan al camino los valores iguales a 1 (los 0 no se agregan), mientras que es “de valor máximo” porque se obtiene de realizar el siguiente cálculo: es la suma de los valores de los nodos multiplicados por su nivel. De haber más de uno, **devolver el primero que se encuentre**.
 
@@ -677,6 +707,10 @@ Con esa configuración se obtiene el mayor valor según el cálculo: 1 * 0 + 0 *
 ![](imgs/P3-ArbolesGenerales-Ejer10.png)
 
 > Nota: No puede generar la lista resultado con 0 / 1 y en un segundo recorrido eliminar los elementos con valor 0.
+
+```java
+
+```
 
 ### [Ejercicio 11]()
 
