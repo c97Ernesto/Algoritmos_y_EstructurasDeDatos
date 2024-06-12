@@ -7,21 +7,21 @@ A B G E F D J H I C ¿cuántos son los descendientes del nodo “C”?
 
 PASO 1: 
 	raíz D					
-	lado izquierdo A G F E B 
-	lado derecho J I H C
+	lado izquierdo A B G E F
+	lado derecho J H I C
 				D
-		AGFEB		JIHC
+		ABGEF		JHIC
 
 		
 PASO 2: A G F E B y J I H C
 	raíces B y C
 	lado izquierdo de B, A
-	lado derecho de B, G F E
-	lado izquierdo de C, J I H
+	lado derecho de B, G E F
+	lado izquierdo de C, J H I
 	lado derecho de C, no tiene
 				D
 		B				C
-	  A	  GFE	     JIH
+	  A	  GEF	     JHI
 		
 PASO 3: G F E y J I H
 	raíces E y H
