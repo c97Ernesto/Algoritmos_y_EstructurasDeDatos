@@ -12,7 +12,7 @@ PASO 1:
 	lado izquierdo A B G E F
 	lado derecho J H I C
 				D
-		ABGEF		JHIC
+		ABGEF			JHIC
 
 
 PASO 2: A G F E B y J I H C
@@ -23,7 +23,7 @@ PASO 2: A G F E B y J I H C
 	lado derecho de C, no tiene
 				D
 		B				C
-	  A	  GEF	     JHI
+	  A	  GEF	    			JHI
 		
 PASO 3: G F E y J I H
 	raíces E y H
@@ -33,8 +33,8 @@ PASO 3: G F E y J I H
 	lado derecho de H, I
 				D
 		B				C
-	  A	  E	      	 H
-	     G F	  	J I	
+	  A	  E	      	 	   H
+	     	 G F	  	 	  J I	
 ``` 
 
 	
@@ -53,19 +53,19 @@ Evalúe la siguiente expresión postfija y determine cuál es el resultado.
 	
 ```txt
 Apilo 1er subárbol R1 = *
-					  6   5
+		      6   5
 					
 Apilo 2do subárbol R2 = -
-					  7   3
+		      7   3
 
 Apilo 3er subárbol R3 = +
-					  4   8
+		      4   8
 					  
 Desapilo últimos dos subárboles y apilo subárbol R4 = *
-													R2 R3
+		      		                    R2 R3
 													
 Desapilo últimos dos subárboles (R1 y R4) y creo el árbol R5 = +
-															 R1	R4															 
+						             R1	R4
 R1 = 30, R2 = 4, R3 = 12
 R4 = 4 * 12 = 48
 R5 = 30 + 48 = 78
