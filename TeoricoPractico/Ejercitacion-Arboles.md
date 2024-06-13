@@ -1,4 +1,41 @@
-### [Ejercicio 1](#ejercicio-1-1)
+### Ejercicio 1
+- Dado un árbol binario T cuyo recorrido postorden es **A G F E B J I H C D** y su recorrido inorden es
+**A B G E F D J H I C** ¿cuántos son los descendientes del nodo C?
+	- (a) 2   
+	- (b) 1   
+	- (c) 3  ✅️
+	- (d) ninguna de las anteriores       
+
+```java
+PASO 1: 
+	raíz D					
+	lado izquierdo A B G E F
+	lado derecho J H I C
+				D
+		ABGEF		JHIC
+
+
+PASO 2: A G F E B y J I H C
+	raíces B y C
+	lado izquierdo de B, A
+	lado derecho de B, G E F
+	lado izquierdo de C, J H I
+	lado derecho de C, no tiene
+				D
+		B				C
+	  A	  GEF	     JHI
+		
+PASO 3: G F E y J I H
+	raíces E y H
+	lado izquierdo de E, G
+	lado derecho de E, F
+	lado izquierdo de H, J
+	lado derecho de H, I
+				D
+		B				C
+	  A	  E	      	 H
+	     G F	  	J I	
+``` 
 
 	
 ### Ejercicio 2
@@ -56,9 +93,9 @@ RTA: 2⁴ = 16 nodos
 
 #### Ejercicio 8
 - Construya el árbol de expresión correspondiente a la siguiente expresión postfija.
-	- 6 5 * 7 3 − 4 8 * + +
+	- **6 5 * 7 3 − 4 8 * + +**
 				
-```txt
+```pascal
 Operando 6: apilo
 	6
 	
@@ -190,6 +227,41 @@ No hay más elementos
 
 ```
 
+#### Ejercicio 13
+- Reconstruya el árbol binario T cuyo recorrido preorden es **2 5 3 9 7 1 6 4 8** y su recorrido 
+inorden es **9 3 7 5 1 2 6 8 4**.
+
+
+```java
+1er PASO:
+	raíz 2
+	lado izquierdo, 5 3 9 7 1 
+	lado derecho, 6 4 8
+					2
+		93751				684			
+	
+2do Paso: 5 3 9 7 1 y 6 4 8
+	raíces 5 y 6
+	lado izquierdo de 5, 9 3 7
+	lado derecho de 5, 1
+	lado izquierdo de 6, no tiene
+	lado derecho de 6, 8 4
+					2
+		5						6
+   937		1						4			
+   								  8
+3er Paso: 397
+	raíz 3
+	lado izquierdo 9
+	lado derecho 7
+	
+					2
+		5						6
+    3		1						4			
+  9   7							  8
+```
+     
+
 #### Ejercicio 18
 - Un árbol general lleno de grado 4, tiene 21 nodos
 	- Cual es la altura del árbol ?
@@ -207,7 +279,36 @@ No hay más elementos
 		- h+1 = 3 
 		- _h = 2_
 	
-	
+#### Ejercicio 15
+
+```
+										A
+
+				B						C						D
+
+		E				F							G			H			I
+
+					J	K	L						M					N		O
+												P		Q
+```
+- **a)** Completar los blancos de las sentencias con la terminología corresopndiente.
+	1. **A** es la raíz del árbol.
+	2. **A** es padre de B, C y D.
+	3. **E** y **F** son hermanos, puesto que ambos son hijos de B
+	4. **E, J, K, L, C, P, Q, H, N, O** son las hojas del árbol.
+	5. El camino de A a J es único, lo conforman los nodos **A**, **B**, **F**, **J** y es de largo **3**.
+	6. **M** es ancestro de P, y por lo tanto **G** es descendiente de D.
+	7. L no es descendiente de C, puesto que no existe **un camino** desde C a L.
+	8. La profundidad/nivel de C es **1**, de F es **2** y de **Q** es 4.
+	9. La altura de C es **0**, de **F** es 1 y de D es **3**.
+	10. La altura del árbol es 4 (largo del camino entre la **raiz (A)** y **P**).
+- **b)** Aplicar los recorridos:
+	1. En profundidad.
+		- Preorden: A B E F J K L C D G M P Q H I	N O
+		- Inorden: E B J F K L A C P M Q G D H N I O
+		- Postorden: E J K L F B C P Q M G H N O I D A
+	2. Por niveles: A B C D E F G H I J K L M N O P Q
+
 		 
 
 #### Ejercicio 19
@@ -232,72 +333,3 @@ No hay más elementos
 	- Tenemos: 5<sup>0</sup> + ... + 5<sup>3</sup> = cantidad de nodos
 	- Como necesitamos solo los nodos internos del árboles:
 		- 5<sup>0</sup>	 + 5<sup>1</sup> + 5<sup>2</sup> = 31
-
-
-___
-
-### Ejercicio 1
-Dado un árbol binario T cuyo recorrido postorden es A G F E B J I H C D y su recorrido inorden es
-A B G E F D J H I C ¿cuántos son los descendientes del nodo “C”?
-- (a) 2   
-- (b) 1   
-- (c) 3  ✅️
-- (d) ninguna de las anteriores       
-
-PASO 1: 
-- raíz D					
-- lado izquierdo A B G E F
-- lado derecho J H I C
-
-	```
-				D
-		ABGEF		JHIC
-	```
-		
-PASO 2: A G F E B y J I H C
-- raíces B y C
-	- lado izquierdo de B, A
-	- lado derecho de B, G E F
-	- lado izquierdo de C, J H I
-	- lado derecho de C, no tiene
-
-	```
-				D
-		B				C
-	  A	  GEF	     JHI
-	```
-		
-PASO 3: G F E y J I H
-- raíces E y H
-	- lado izquierdo de E, G
-	- lado derecho de E, F
-	- lado izquierdo de H, J
-	- lado derecho de H, I
-	```
-				D
-		B				C
-	  A	  E	      	 H
-	     G F	  	J I	
-	```
- 	  
-
-### Ejercicio 5
-
-### Ejercicio 6
-	
-### Ejercicio 7	
-
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		

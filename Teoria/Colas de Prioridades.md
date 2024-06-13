@@ -48,7 +48,25 @@ Es una Implementación de Colas de Prioridad que no usa punteros y permite imple
 
 **Propiedad Estructural:** Donde una Heap es un Árbol Binario Completo.
 
-- En un Árbol Binario Completo de altura _h_, los nodos internos tienen exáctamente 2 hijos y las hojas tienen la misma profundidad.
+- En un _Árbol Binario Lleno_ de altura _h_, los nodos internos tienen exáctamente 2 hijos y las hojas tienen la misma profundidad.
+
+	```java
+	/* Lleno */										n1
+
+									n2								n3
+
+							  n4		 n5						n4		 n5
+	```
+
+- Un _Árbol Binario Completo_ de altura h es un árbol binario lleno de altura _h - 1_ y en el nivel h, los nodos se completan de izquierda a derecha
+	```java
+	/* Completo */									n1
+
+									n2								n3
+
+							  n4		 n5						n4		 
+
+	```
 
 - El número de nodos _n_ de un árbol binario completo de altura _h_ satisface:
 	- 2<sup>h</sup> <= n <= 2<sup>(h+1)</sup>-1
@@ -62,6 +80,14 @@ Es una Implementación de Colas de Prioridad que no usa punteros y permite imple
 		- el hijo derecho está en la posición 2*i+1
 		- el padre está en la posición i/2
 
+	```java
+	/* Ejemplo */									1
+
+							3											2
+
+					8				7							26				6
+				18		14		9
+	```
 
 **Propiedad de Orden:** Además de completo el árbol debe tener un orden
 
