@@ -1,4 +1,4 @@
-#### [Ejercicio 1](#ejercicio-1)
+#### [Ejercicio 1](#ejercicio-1-1)
 - A partir de una heap inicialmente vacía, inserte de a uno los siguientes valores:
 	- 6, 4, 15, 2, 10, 11, 8, 1, 13, 7, 9, 12, 5, 3, 14
 	
@@ -22,28 +22,41 @@
 	- A C B D E
 	- A C B E D	
 	
-#### [Ejercicio 5](#ejercicio-5)
+#### [Ejercicio 5](#ejercicio-5-1)
 - A partir de una min-heap inicialmente vacía, dibuje la evolución del estado de la heap al ejecutar las siguientes operaciones:
 	- Insert(5), Insert(4), Insert(7), Insert(1), DeleteMin(), Insert(3), Insert(6), DeleteMin(), DeleteMin(), Insert(8), DeleteMin(), Insert(2), DeleteMin(), DeleteMin()
 
 
-#### [Ejercicio 6](#ejercicio-6)
+#### [Ejercicio 6](#ejercicio-6-1)
 Aplique el algoritmo BuildHeap, para construir una min-heap en tiempo lineal, con los siguientes valores.
 - {150, 80, 40, 10, 70, 110, 30, 120, 140, 60, 50, 130, 100, 20, 90}
 
-#### [Ejercicio 7](#ejercicio-7)
+#### [Ejercicio 7](#ejercicio-7-1)
 Aplique el algoritmo HeapSort, para ordenar descendentemente los siguientes elementos:
 
 - {15, 18, 40, 1, 7, 10, 33, 2, 140, 500, 11, 12, 13, 90}
 
 - Muestre paso a paso la ejecución del algoritmo sobre los datos.
 
-#### [Ejercicio 8](#ejercicio-8)
+#### [Ejercicio 8](#ejercicio-8-1)
 - Construir una max-heap binaria con los siguientes datos: {5, 8, 12, 9, 7, 10, 21, 6, 14, 4}
 
 	- a) Insertándolos de a uno
 	
 	- b) Usando el algoritmo BuildHeap
+
+#### Ejercicio 10
+Suponga que una heap que representa una cola de prioridades está almacenada en el arreglo A (se comienza de la posición A[1]). Si aplica un delete-min, ¿en qué o posición quedará la clave 62?
+
+- **A[i]:** 11 21  27 37 36 34 32 43 44 42 51 62
+
+	- 62 21  27 37 36 34 32 43 44 42 51
+		- filtro: 21 62  27 37 36 34 32 43 44 42 51
+		- filtro: 21 36  27 37 62 34 32 43 44 42 51
+		- filtro: 21 36  27 37 42 34 32 43 44 62 51
+
+
+#### 
 	
 #### Ejercicio 12
 ¿Cuáles de los siguientes arreglos representan una max-heap, min-heap o ninguna de las dos?
@@ -132,7 +145,7 @@ Se construyó una Máx-Heap con las siguientes claves: 13, 21, 87, 30, 25, 22, 1
 
 **(a)** 87, 30, 25, 22, 21, 18, 13
 
-**(b)** 87, 30, 22, 21, 25, 13, 18** ✅️
+**(b)** **87, 30, 22, 21, 25, 13, 18** ✅️
 
 - No Filtramos 87: 13, 21, 87, 30, 25, 22, 18
 
@@ -315,7 +328,7 @@ Se elige el menor de los hijos y se compara con el padre.
 	
 - {15, 18, 40, 1, 7, 10, 33, 2, 140, 500, 11, 12, 13, 90}
 
-- Construyo una MinHeap para ordenar ascendentemente
+- Construyo una MinHeap para ordenar ascendentemente aplicando BuildHeap
 
 	- {1, 2, 10, 15, 7, 12, 33, 18, 140, 500, 11, 40, 13, 90}
 	
