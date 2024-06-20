@@ -48,25 +48,9 @@ Es una Implementación de Colas de Prioridad que no usa punteros y permite imple
 
 **Propiedad Estructural:** Donde una Heap es un Árbol Binario Completo.
 
-- En un _Árbol Binario Lleno_ de altura _h_, los nodos internos tienen exáctamente 2 hijos y las hojas tienen la misma profundidad.
+- En un Árbol Binario Lleno de altura _h_, los nodos internos tienen exáctamente 2 hijos y las hojas tienen la misma profundidad.
 
-	```java
-	/* Lleno */										n1
-
-									n2								n3
-
-							  n4		 n5						n4		 n5
-	```
-
-- Un _Árbol Binario Completo_ de altura h es un árbol binario lleno de altura _h - 1_ y en el nivel h, los nodos se completan de izquierda a derecha
-	```java
-	/* Completo */									n1
-
-									n2								n3
-
-							  n4		 n5						n4		 
-
-	```
+- Un Árbol Binario Completo de altura h es un árbol binario lleno de altura _h - 1_ y en el nivel h, los nodos se completan de izquierda a derecha
 
 - El número de nodos _n_ de un árbol binario completo de altura _h_ satisface:
 	- 2<sup>h</sup> <= n <= 2<sup>(h+1)</sup>-1
@@ -80,28 +64,20 @@ Es una Implementación de Colas de Prioridad que no usa punteros y permite imple
 		- el hijo derecho está en la posición 2*i+1
 		- el padre está en la posición i/2
 
-	```java
-	/* Ejemplo */									1
 
-							3											2
-
-					8				7							26				6
-				18		14		9
-	```
-
-**Propiedad de Orden:** Además de completo el árbol debe tener un orden
+**Propiedad de Orden:** Además de ser completo el árbol debe tener un orden
 
 - MinHeap
 
 	- El elemento mínimo (de menor prioridad) está almacenado en la raíz.
 	
-	- El dato almacenada en cada nodo es menor o igual al de sus hijos.
+	- El dato almacenado en cada nodo es menor o igual al de sus hijos.
 	
 - MaxHeap
 	
 	- Se usa la propiedad inversa.
 	
-## Implementación
+## Implementación de una Heap
 
 Una Heap H **consta de**:
 
@@ -174,12 +150,29 @@ Se empieza a filtrar desde el elemento que está en la posición (tamaño / 2):
 - se filtran los nodos qie tienen hijos
 - el resto de los nodos son hojas.
 
-**Cantidad de operaciones requeridas:**
+```java
+// Ejemplo: Dada la siguiente lista de elementos, aplicar Build Heap: [5 8 12 9 7 10 21 6 14 4].
+Arranco desde array.size / 2 = pos nro 5.
+	- Percolate Down (7): 5 8 12 9 4 10 21 6 14 7
+	- Percolate Down (9): 5 8 12 6 4 10 21 9 14 7
+	- Percolate Down (12): 5 8 10 6 4 12 21 9 14 7
+	- Percolate Down (8): 5 4 10 6 8 12 21 9 14 7 -> 5 4 10 6 7 12 21 9 14 8
+	- Percolate Down (5): 4 5 10 6 7 12 21 9 14 8 -> 
+```
+
+
+#### Cantidad de operaciones requeridas:
 
 - En el filtrado de cada nodo recorremos su altura
 
 - Para acotar la cantidad de operaciones _(tiempo de ejecución)_ del algoritmo BuildHeap, debemos calcular la suma de las alturas de todos los nodos.
 	- Teorema: En un arbol binario lleno de altura h que contiene 2<sup>h+1</sup> -1 nodos, la suma de las alturas de los nodos es: 2<sup>h+1</sup> - 1 - (h + 1)
+
+- Un árbol binario completo no es un árbol binario lleno, pero el resultado obtenido es una cota superior de la suma de las alturas de los nodos en un árbol binario completo.
+
+- Un árbol binario completo tiene entre 2<sup>h</sup> y 2<sup>h+1</sup> - 1 nodos, el teorema implica que esta suma es de O(n) donde n es el número de nodos.
+
+- Este resultado muestra que la operación  BuidHeap es de orden lineal.
 	
 ## Ordenación de vectores usando Heap
 Dado un conjunto de _n_ elementos y se los quiere ordenar en forma creciente, existen dos alternativas:
@@ -189,13 +182,45 @@ Dado un conjunto de _n_ elementos y se los quiere ordenar en forma creciente, ex
 	- Construir una MinHeap, realizar **n** DeleteMin operaciones e ir guardando los elementos extraídos en otro arreglo.
 	
 	- Desventaja: requiere el doble de espacio	
+
+	```java
+	// Ejemplo: Construir una MinHeap, realizar 6 DeleteMin operaciones e ir guradando los elementos extraídos en otro arreglo
+		entrada: [50 30 18 25 22 12]
+		salida: [12]
+	```
 	
 2. _Algoritmo **HeapSort** que requiere una cantidad aproximada de (n log n) operaciones, pero **menos espacio**_ 
 
 	- Construir una MaxHeap con los elementos que se desean ordenar, intercambiar el último elemento con el primero, decrementar el tamaño de la heap y filtrar hacia abajo. Usa solo el espacio de almacenamiento de la heap.
 
+	```java
+	// Ejemplo [50 30 18 25 22 12 15 9]:
+		Intercambio el 1er elementos con el último, decremento el tamaño y filtro el elemento en caso de que sea necesario
 
+		- [50 30 18 25 22 12 15 9]
+		
+			- Intercambio y decremento tamaño: [9 30 18 25 22 12 15 | 50]
+			- Filtro: [30 25 18 9 22 12 15 | 50]
 
+			- Intercambio y decremento tamaño: [15 25 18 9 22 12 | 30 50]
+			- Filtro: [25 22 18 9 15 12 | 30 50]
+
+			- Intercambio y decremento tamaño: [12 22 18 9 15 | 25 30 50]
+			- Filtro: [22 15 18 9 12 | 25 30 50]
+
+			- Intercambio y decremento tamaño: [12 15 18 9 | 22 25 30 50]
+			- Filtro: [18 15 12 9 | 22 25 30 50]
+
+			- Intercambio y decremento tamaño: [9 15 12 | 18 22 25 30 50]
+			- Filtro: [15 9 12 | 18 22 25 30 50]
+
+			- Intercambio y decremento tamaño: [12 9 | 15 18 22 25 30 50]
+			- Filtro: [12 9 | 15 18 22 25 30 50]
+
+			- Intercambio y decremento tamaño: [9 | 12 15 18 22 25 30 50]
+			
+		
+	```
 
 
 
