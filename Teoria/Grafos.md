@@ -9,14 +9,19 @@
 ### [Conectividad](#conectividad-1)
 
 ### [Recorridos](#recorridos-1)
+- [Recorrido en Amplitud: BFS (Breath First Search)](#recorrido-en-amplitud-bfs-breath-first-search-1).
+- [Recorrido en Profundidad: DFS (Depth First Search)](#recorrido-en-profundidad-dfs-depth-first-search).
+
+### [Aplicaciones del DFS](#aplicaciones-del-dfs-1)
 
 
 ## Definición
-
-## Descripción y terminología
 - **Grafo**: Modelo matemático para representar relaciones entre los elementos de un conjunto (nodos/vértices). Se define como un par ordenado _(V,E)_ donde:
     - _V_: es un conjunto de vértices o nodos. Cada vértice representa un elemento del conjunto.
     - _E_: es un conjunto de pares (u,v), donde u y v pertenecen a V. Estos pares se llaman _aristas_ o _arcos_ y representan la relación entre dos vértices.
+
+## Descripción y terminología
+
 
 - **Grafo dirigido**: en un grafo dirigido la relación sobre V no es simétrica. Esto quiere decir que _si existe una arista_ desde el vértice _u al vértice v_, _no necesariamente existe_ una arista _desde v a u_.
 
@@ -98,6 +103,7 @@ Un grafo no dirigido es **conexo** si hay un camino entre cada par de vértices.
 
 ## Recorridos
 ### Recorrido en Profundidad: DFS (Depth First Search).
+El DFS es un algoritmo de recorrido de grafos en profundidad. Generalización del recorrido preorden de un árbol.
 #### Estrategia:
 - Se comienza desde un vértice determinado.
 - Se marca el vértice actual como visitado.
@@ -112,8 +118,10 @@ Un grafo no dirigido es **conexo** si hay un camino entre cada par de vértices.
 4. Para todo `v` adyacente a `u`, `(u,v)` perteneciente a _E_, si `v` no ha sido visitado, repeterir _3_ y _4_ para `v`
 - Finalizar cuando se hayan alcnazado todos los nodos alcanzables desde `u`.
 - Si desde `u` no fueron alcanbles todos los nodos del grafo: volver a _2_, elegir un nuevo vértice de partida `v` no visitado, y repetir el proceso hasta que se hayan recorrido todos los vértices.
+- El recorrido del DFS depende del orden en que aparecen los vértices en las listas de adyacencia.
 
     ```
+    /*pseudocódigo*/
     dfs(v: vértice){
         marca[v]:= visitado;
         para cada nodo w adyacente a v {
@@ -131,15 +139,46 @@ Un grafo no dirigido es **conexo** si hay un camino entre cada par de vértices.
     }
     ```
 
+    ```java
+    //java
+    public void dfs(Graph<T> grafo) {
+        boolean[] marca = new boolean[grafo.getSize()];
+
+        for (int i = 0; i < grafo.getSize(); i++){
+            if (!marca[i]) {
+                //imprimo dato del nodo con el que arranco el camino
+                System.out.println("largo con: "+ grafo.getVertex(i).getData());    
+                dfs(i, grafo, marca);
+            }
+        }
+    }
+    private void dfs(int pos, Graph<T> grafo, boolean[] marca) {
+        marca[pos] = true;
+        Vertex<T> v = grafo.getVertex(pos);
+        //imprimo el dato del nodo que me encuentro en el camino
+        System.out.println(v);
+
+        List<Edge<T>> aristas = grafo.getEdges(v);
+
+        Iterator<Edge<T>> i = aristas.iterator();
+
+        while (i.hasNext()){
+            int posVerticeDestino = i.next().getTarget().getPosition();
+
+            if (!marca[posVerticeDestino])
+                dfs(posVerticeDestino, grafo, marca);
+        }
+    }
+    ```
+
 #### Tiempo de ejecucución
 
 ### Recorrido en Amplitud: BFS (Breath First Search).
 Es una generalización del recorrido por niveles de un árbol.
 - _Primero se exploran todos los vértices a una distancia de 1 arista del vértice inicial, luego los vértices a una distancia de 2 aristas y así sucesivamente._
 #### Estrategia:
-- Comienza desde un vértice inicial.
-- Se marca ese vértice como visitado.
-- Se exploran los vértices adyacentes al incial en el orden que aparecen en la lista de adyacencia y se marca cada vértice como visitado.
+- Partir de algún vértice _v_, visitar _v_, después visitar cada uno de los vértices adyacentes a _v_.
+- Repetir el proceso para cada nodo adyacente a _v_, siguiendo el orden en que fueron visitados.
 
 #### Esquma iterativo: _Dado G = (V,E)_
 1. Encolar el vértice origen `u`
@@ -151,6 +190,38 @@ Es una generalización del recorrido por niveles de un árbol.
 7. -------- encolar y visitar `v`
 - Si desde `u` no fueron alcanzados todos los nodos del grafo: volver a _1_, elegir un nuevo vértice de partida no visitado, y repetir el proceso hasta que se hayan recorrido todos los vértices.
 - Costo _T(|V|,|E|)_ es de _O(|V|+|E|)_ (orden lineal).
+
+    ```java
+    public void bfs(Grafo<T> grafo) {
+        boolean[] marca = new boolean[grafo.getSize()];
+        for (int i = 1; i <= marca.length; i++) {
+            if (!marca[i]){
+                this.bfs(i, grafo, marca); //las listas empiezan en la pos 1
+            }
+        }
+    }
+    private <T> void bfs(int pos, Graph<T> grafo, boolean[] marca) {
+		Queue<Vertex<T>> cola = new Queue<Vertex<T>>();
+		cola.enqueue(grafo.getVertex(pos));
+		marca[pos] = true;
+		
+		while(!cola.isEmpty()) {
+			Vertex<T> vertice = cola.dequeue();
+			System.out.println(vertice);
+			List<Edge<T>> aristas = grafo.getEdges(vertice);
+			
+			for (Edge<T> arista: aristas) {
+				int posVerticeDestino = arista.getTarget().getPosition();
+				
+				if (!marca[posVerticeDestino]) {
+					marca[posVerticeDestino] = true;
+					Vertex<T> verticeDestino = arista.getTarget();
+					cola.enqueue(verticeDestino);
+				}
+			}
+		}
+	}
+    ```
 
 ### Bosque de expansión generado a partir de un recorrido BFS
 _Puede ser un árbol o una colección de árboles generados a partir de un recorrido BFS, donde cada árbol representa una parte conexa del grafo original. Cada árbol se forma a partir de un nodo inicial y las sucesivas visitas al los nodos adyacentes_.
@@ -217,5 +288,5 @@ en _V’_, existe un camino tanto _u→v_ como _u→v_.
     3. Aplicar DFS (G<sup>R</sup>) comenzando por los vértices de mayor rótulo (tope de la pila).
     4. Cada árbol de expansión resultante del paso 3 es una componente fuertemente conexa.
     - Si resulta **un único árbol** entonces el digrafo es **fuertemente conexo**.
-    
+
 ![Grafos-Aplicaciones-ComponentesFuertementeConexasKosajaru](./imgs/Grafos-Aplicaciones-ComponentesFuertementeConexasKosajaru.png)
