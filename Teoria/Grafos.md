@@ -1,6 +1,6 @@
 <h1 align="center">Grafos</h1>
 
-## Grafos
+
 
 ### [Definición](#definición-1)
 
@@ -13,6 +13,8 @@
 - [Recorrido en Profundidad: DFS (Depth First Search)](#recorrido-en-profundidad-dfs-depth-first-search).
 
 ### [Aplicaciones del DFS](#aplicaciones-del-dfs-1)
+
+### [Ordenación Topológica](#ordenación-topológica-1)
 
 
 ## Definición
@@ -230,7 +232,7 @@ _Se pueden generar un arbol o más de uno (bosque)_
 
 
 - El recorrido **no es único**: depende del nodo incial y del orden de visita de los adyacentes.
-- El orden de visita de unos nodos a partir de otros puede ser visto como un árbol: **arbol de expansión (abarcador) en profundidad asociado al grafo.**
+- El orden de visita de unos nodos a partir de otros puede ser visto como un árbol.
 - Si aparecen varios árboles: **bosque de expansión (o abarcador) en profundidad**
 
 ![Grafos-BosqueExpansion-Img2](./imgs/Grafos-BosqueExpansion-Img2.png)
@@ -257,7 +259,7 @@ o entre vértices de diferentes árboles en el bosque depth-first-search.
 - **e** → F. No se puede hablar de un grafo fuertemente conexo en un grafo no dirifigo. Solo podría ser conexo.
 
 ## Aplicaciones del DFS
-### Problema 1: Encontrar las componentes conexas de un grafo no dirigido.
+### Problema 1: Encontrar las componentes conexas de un grafo _no dirigido_.
 - Si el **grafo es conexo**: un recorrido desde cualquier vértice visitará a **todos** los vértices del grafo
 - Si no lo es:
     - Partiendo desde un vértice, tendremos una componente conexa (conjunto de vértices recorridos).
@@ -290,3 +292,94 @@ en _V’_, existe un camino tanto _u→v_ como _u→v_.
     - Si resulta **un único árbol** entonces el digrafo es **fuertemente conexo**.
 
 ![Grafos-Aplicaciones-ComponentesFuertementeConexasKosajaru](./imgs/Grafos-Aplicaciones-ComponentesFuertementeConexasKosajaru.png)
+
+## Ordenación Topológica
+La ordenación topológica es un permutación. Se **aplica a grafos dirigidos acíclicos (DAGs)**, 
+- v<sub>1</sub>, v<sub>2</sub>, v<sub>3</sub>, ..., v<sub>|V|</sub> de los vértices, tal que si (v<sub>i</sub>, v<sub>j</sub>) pertenecientes a _E_, v<sub>i</sub> <> v<sub>j</sub>, entonces v<sub>i</sub> precede a v<sub>j</sub> en la permutación.
+- La ordenación no es posible si G es acíclico.
+- La ordenación topológica no es única.
+- Una ordenación topológica es como una ordenación de los vértices a lo largo de una línea horizontal, con los arcos de izquierda a derecha.
+
+### Algoritmos
+- Con complejidad O( |V|2): 
+    - Implementación con Arreglo (versión 1)
+- Con complejidad O( |V| + |A| )
+    - Implementación con Pila o Cola (versión 2)
+    - DFS (versión 3)
+
+
+**Versión 1, implementación con arreglo:** En esta versión el algoritmo utiliza un arreglo _Grado_in_ en el que se almacenan los grados de entradas de los vértices y en cada paso se toma de allí en vértice con _grado_in = 0_.
+
+1. Seleccionar un vértice _v_ con grado de entrada 0.
+2. Visitar _v_.
+3. "Eliminar" _v_, junto con sus aristas salientes.
+4. Repetir el paso 1 hasta seleccionar todos los vértices.
+
+![grafos-SortTopologico-ConArreglo-1](imgs/grafos-SortTopologico-ConArreglo-1.png)
+![grafos-SortTopologico-ConArreglo-1](imgs/grafos-SortTopologico-ConArreglo-2.png)
+
+- Si en algún paso después de recorrer el arreglo para verificar el siguiente vértice que voy a visitar, no encuentro ninguno con _grado_in = 0_, es porque en el grafo hay un ciclo.
+
+- EL algoritmo tiene un orden de **O(|V|<sup>2</sup> + |E|)**
+
+```C
+int sortTopologico( ){
+    int numVerticesVisitados = 0;
+
+    while(haya vertices para visitar){
+        if(no existe vertice con grado_in = 0)
+            break;
+
+        else{
+            // Búsqueda secuencial en el arreglo. => O(V)
+            seleccionar un vertice v con grado_in = 0;     
+            visitar v; //mandar a la salida
+            numVerticesVisitados++;
+            // Decrementar el grado de entrada de los adyacentes a v. => O(nroAristas de v)
+            "borrar" v y todas sus aristas salientes;   
+        }
+    }
+    return numVerticesVisitados;
+}
+```
+
+**Versión 2, optimización de la version anterior:** En esta versión el algoritmo utiliza un arreglo _Grado_in_ en el que se almacenan los grados de entradas de los vértices y una pila P (o una cola Q) en donde se almacenan los vértices con grados de entrada igual a cero.
+- Recorre una sola vez el arreglo al principio para encontrar los vértices que tiene grado de entrada cero y son colocalodos en una pila o cola.
+- En todos momento en la pila/cola va a ver un elemento para desapilar/desencolar, si este no fuera el caso es porque en el grafo se encuentra un ciclo.
+
+![grafos-SortTopologico-UsandoPila-V2-1](imgs/grafos-SortTopologico-UsandoPila-V2-1.png)
+![grafos-SortTopologico-UsandoPila-V2-2](imgs/grafos-SortTopologico-UsandoPila-V2-2.png)
+
+- EL algoritmo tiene un orden de **O(|V| + |E|)**
+
+```C
+int sortTopologico( ){
+    
+    int numVerticesVisitados = 0;
+    
+    while(haya vertices para visitar){
+        if(no existe vertice con grado_in = 0)
+            break;
+        else{
+            // Tomar el vértice de la cola => O(1)
+            seleccionar un vertice v con grado_in = 0;
+            visitar v; //mandar a la salida
+            numVerticesVisitados++;
+            // Decrementar el grado de entrada de los adyacentes de v.
+            // Si llegó a 0, encolarlo. => O(nroAristas de v)
+            borrar v y todas sus aristas salientes;
+        }
+    }
+    return numVerticesVisitados;
+}
+```
+
+
+
+**Versión 3, aplicando el recorrido en profundidad:** Se realiza un recorrido DFS, marcando cada vértice en post-orden, es decir, una vez visitados todos los vértices a partir de uno dado, el marcado de los vértices en post-orden puede implementarse según una de las siguientes opciones: 
+1. numerándolos antes de retroceder en el recorrido; luego se listan los vértices según sus números de post-orden de mayor a menor.
+![grafos-SortTopologico-DFSNumerando-V3](imgs/grafos-SortTopologico-DFSNumerando-V3.png)
+
+2. colocándolos en una pila P, luego se listan empezando
+por el tope.
+![grafos-SortTopologico-DFSApilando-V3](imgs/grafos-SortTopologico-DFSApilando-V3.png)
