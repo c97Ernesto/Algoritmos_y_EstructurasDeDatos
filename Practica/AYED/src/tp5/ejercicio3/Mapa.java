@@ -54,7 +54,7 @@ public class Mapa<T> {
 		}
 		
 		if ((vertice.getData().toString().equals(ciudadDestino)) || camino.size() != 0) {
-			camino.addFirst(vertice.getData().toString());
+			camino.add(0, vertice.getData().toString());
 		}
 	}
 	
@@ -97,7 +97,7 @@ public class Mapa<T> {
 			}
 			
 			if (vertice.getData().toString().equals(ciudadDestino) || camino.size() != 0) {
-				camino.addFirst(vertice.getData().toString());
+				camino.add(0, vertice.getData().toString());
 			}
 		}
 	}
@@ -152,7 +152,7 @@ public class Mapa<T> {
 				}
 			}
 		}
-		caminoAct.removeLast();
+		caminoAct.remove(caminoAct.size() - 1);
 		
 		marca[posVertice] = false;
 		
@@ -215,7 +215,7 @@ public class Mapa<T> {
 		marca[pos] = false;
 		
 		if ((vertice.getData().toString().equals(destino) && tanqueAuto > 0) || caminoAct.size() != 0) {
-			caminoAct.addFirst(vertice.getData().toString());
+			caminoAct.add(0, vertice.getData().toString());
 		}
 		
 	}

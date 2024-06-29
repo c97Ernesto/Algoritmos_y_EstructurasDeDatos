@@ -10,11 +10,26 @@
 
 ### [Recorridos](#recorridos-1)
 - [Recorrido en Amplitud: BFS (Breath First Search)](#recorrido-en-amplitud-bfs-breath-first-search-1).
-- [Recorrido en Profundidad: DFS (Depth First Search)](#recorrido-en-profundidad-dfs-depth-first-search).
+- [Recorrido en Profundidad: DFS (Depth First Search)](#recorrido-en-amplitud-bfs-breath-first-search).
 
 ### [Aplicaciones del DFS](#aplicaciones-del-dfs-1)
+- [Encontrar componentes conexas de un grafo no dirigido](#problema-1-encontrar-las-componentes-conexas-de-un-grafo-no-dirigido)
+- [Prueba de aciclicidad](#problema-2-prueba-de-aciclicidad)
+- [Encontrar componentes fuertemente conexas (Kosajaru)](#problema-3-encontrar-las-componentes-fuertemente-conexas)
 
 ### [Ordenación Topológica](#ordenación-topológica-1)
+- [Versión 1: implementación con arreglo](#versión-1-implementación-con-arreglo)
+- [Versión 2: implementación con Pila o Cola](#versión-2-optimización-de-la-version-anterior-con-pila-o-cola)
+- [Versión 3: aplicando DFS](#versión-3-aplicando-el-recorrido-en-profundidad)
+
+### [Caminos de Costo Mínimo]()
+- [Definición]()
+- #### [Algoritmos para el cálculo del camino mínimo desde un origen en:]()
+    - [Grafos sin peso]()
+    - [Grafos con pesos positivos]()
+    - [Grafos con pesos negativos y positivos]()
+    - [Grafos acíclicos]()
+- []()
 
 
 ## Definición
@@ -279,7 +294,7 @@ Orden de complejidad de la prueba de aciclicidad: igual que los recorridos.
 Una aplicación clásica del depth-first search es descomponer un grafo dirigido en componentes fuertemente conexas (o conectadas).
 
 Una **componente fuertemente conexa** de un grafo dirigido _G=(V,E)_ es el conjunto máximo de vértices _V’ ⊆ V_ tal que para cada par de vértices _u_ y _v_
-en _V’_, existe un camino tanto _u→v_ como _u→v_.
+en _V’_, existe un camino tanto _u→v_ como _v→u_.
 
 **Algoritmo de Kosaraju**: _Es un algoritmo de tiempo lineal para encontrar las componentes fuertemente conexas de un digrafo._
 - Se realizab dos dfs y se recorren todas las aristas una vez para crear el grafo reverso. _O(|V|+|E|)_
@@ -308,7 +323,8 @@ La ordenación topológica es un permutación. Se **aplica a grafos dirigidos ac
     - DFS (versión 3)
 
 
-**Versión 1, implementación con arreglo:** En esta versión el algoritmo utiliza un arreglo _Grado_in_ en el que se almacenan los grados de entradas de los vértices y en cada paso se toma de allí en vértice con _grado_in = 0_.
+### Versión 1, implementación con arreglo:
+En esta versión el algoritmo utiliza un arreglo _Grado_in_ en el que se almacenan los grados de entradas de los vértices y en cada paso se toma de allí en vértice con _grado_in = 0_.
 
 1. Seleccionar un vértice _v_ con grado de entrada 0.
 2. Visitar _v_.
@@ -343,7 +359,8 @@ int sortTopologico( ){
 }
 ```
 
-**Versión 2, optimización de la version anterior:** En esta versión el algoritmo utiliza un arreglo _Grado_in_ en el que se almacenan los grados de entradas de los vértices y una pila P (o una cola Q) en donde se almacenan los vértices con grados de entrada igual a cero.
+### Versión 2, optimización de la version anterior con Pila o Cola: 
+En esta versión el algoritmo utiliza un arreglo _Grado_in_ en el que se almacenan los grados de entradas de los vértices y una pila P (o una cola Q) en donde se almacenan los vértices con grados de entrada igual a cero.
 - Recorre una sola vez el arreglo al principio para encontrar los vértices que tiene grado de entrada cero y son colocalodos en una pila o cola.
 - En todos momento en la pila/cola va a ver un elemento para desapilar/desencolar, si este no fuera el caso es porque en el grafo se encuentra un ciclo.
 
@@ -376,10 +393,71 @@ int sortTopologico( ){
 
 
 
-**Versión 3, aplicando el recorrido en profundidad:** Se realiza un recorrido DFS, marcando cada vértice en post-orden, es decir, una vez visitados todos los vértices a partir de uno dado, el marcado de los vértices en post-orden puede implementarse según una de las siguientes opciones: 
+### Versión 3, aplicando el recorrido en profundidad:
+Se realiza un recorrido DFS, marcando cada vértice en post-orden, es decir, una vez visitados todos los vértices a partir de uno dado, el marcado de los vértices en post-orden puede implementarse según una de las siguientes opciones: 
+
 1. numerándolos antes de retroceder en el recorrido; luego se listan los vértices según sus números de post-orden de mayor a menor.
 ![grafos-SortTopologico-DFSNumerando-V3](imgs/grafos-SortTopologico-DFSNumerando-V3.png)
 
 2. colocándolos en una pila P, luego se listan empezando
 por el tope.
 ![grafos-SortTopologico-DFSApilando-V3](imgs/grafos-SortTopologico-DFSApilando-V3.png)
+
+
+## Caminos de Costo Mínimo
+Sea G=(V,A) un grafo dirigido y pesado (ponderado), el costo _c(i,j)_ está asociado a la arista _v(i,j)_.
+- **Costo (peso) de un camino** **_<p = v<sub>1</sub>, v<sub>2</sub>, v<sub>3</sub>, ..., v<sub>n</sub>>:_** es la suma se los pesos de las aristas que lo forman.
+- Este valor también se lo llama longitud del camino pesado.
+- **Camino de mínimo costo (peso):** el camino de costo mínimo desde un vértice v<sub>i</sub> a otro vértice v<sub>j</sub> es aquel en que la suma de los costos de las aristas es mínima.
+
+**La _longitud_ del camino de un _grafo no pesado_ es la cantidad de aristas.**
+
+![grafos-caminosCostoMinimo-1](./imgs/grafos-caminosCostoMinimo-1.png)
+
+### Grafos sin Peso
+Para cada vértice _v_ se mantiene la siguiente información:
+- D<sub>v</sub> : distancia mínima desde el origen s (inicialmente ∞ para todos los vértices excepto el origen con valor 0).
+- P<sub>v</sub> : vértice por donde paso para llegar.
+- Conocido: dato booleano que me indica si está  procesado (inicialmente todos en 0).
+    - este último campo no es necesario par esta clase de grafos.
+
+#### Estrategia: Recorrido en amplitud (BFS)
+Pasos:
+- Avancar por niveles a partir del origen, asignando distancias según se avanza (se utiliza un cola).
+- Inicialmente, es D<sub>w</sub> = ∞. 
+    - al inspeccionar _w_ se reduce al valor correcto D<sub>w</sub> = D<sub>v</sub> + 1
+- Desde cada _v_, visitamos a todos los nodos adyacentes a _v_.
+
+### Grafos con pesos positivos
+#### Estrategia: Algoritmo de Dijkstra.
+- Pasos:
+    1. Dado un vértice orige _s_, elegir el vértice _v_ que se encuentre a la menor distancia de _s_, dentro de los vértices no procesados.
+    2. Marcar _v_ como procesado.
+    3. Actualizar la distancia de _w_ adyacente a _v_
+
+- Para cada vértice _v_ se mantiene la siguiente información.
+    - D<sub>v</sub> : distancia mínima desde el origen s (inicialmente ∞ para todos los vértices excepto el origen con valor 0).
+    - P<sub>v</sub> : vértice por donde paso para llegar.
+    - Conocido: dato booleano que me indica si está  procesado (inicialmente todos en 0).
+
+- La actualización de la distancia de los adyacentes _w_ se realiza con el siguiente criterio:
+    - Se compara **D<sub>w</sub>** _(distancia de s a w sin pasar por v)_ con **D<sub>v</sub> + c(v,w)** _(distancia de s a w, pasando por v)_
+    - Se actualiza si **D<sub>w</sub> > D<sub>v</sub> + c(v,w)**
+
+### Grafos con pesos negativos y positivos
+#### Estrategia: Encolar los vértices.
+- Si el grafo tiene aristas negativas, el algoritmo de Dijkstra puede dar un resultado erroneo
+- Pasos
+    1. Encolar el vértice origen _s_.
+    2. Procesar la cola:
+        1. Desencolar un vértice.
+        2. actualizar la distancia de los adyacentes D<sub>w</sub> siguiendo el mismo criterio que Dijkstra.
+        3. si _w_ no está en la cola, econlarlo.
+- El costo total del algoritmo es de O(|V|*|E|).
+
+### Grafos acíclicos
+#### Estrategia: Orden Topológico
+- Optimización del alogitmo de Dijkstra.
+- La selección de cada vértice se realiza siguiendo el orden topológico.
+- Esta estrategia funciona correctamente, dado que al seleccionar un vértice _v_, no se va a encontrar una distancia d<sub>v</sub> menor, porque ya se procesaron todos los caminos que llegan a él.
+- El costo del algoritmo es de _O(|V|+|E|)_
